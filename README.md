@@ -1,1 +1,1 @@
-# billboard-automator
+# billboard-automator-server
