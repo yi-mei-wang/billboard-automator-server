@@ -2,11 +2,10 @@ import peewee as pw
 from playhouse.hybrid import hybrid_property
 from config import AWS_DOMAIN
 from models.base_model import BaseModel
-from models.customer import Customer
 
 
 class Picture(BaseModel):
-    customer_id = pw.ForeignKeyField(Customer, backref="pictures")
+    order_id = pw.ForeignKeyField(Order, backref="pictures")
     path = pw.CharField()
     
     @hybrid_property
