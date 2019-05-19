@@ -22,5 +22,5 @@ class BaseModel(pw.Model):
         return True
     
     class Meta:
-        database = database
+        database = db
         legacy_table_names = False

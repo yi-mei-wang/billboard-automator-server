@@ -17,7 +17,6 @@ def return_db():
     db_config = parse_db_url(os.getenv('DATABASE_URL'))
 
     if os.getenv('MIGRATION', '0') == '1':
-
         from playhouse.postgres_ext import PostgresqlExtDatabase
 
         return PostgresqlExtDatabase(db_config['database'], user=db_config.get('user', None),

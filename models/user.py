@@ -4,7 +4,7 @@ from models.base_model import BaseModel
 from werkzeug.security import generate_password_hash
 
 
-class Customer(BaseModel, UserMixin):
+class User(BaseModel, UserMixin):
     username = pw.CharField(null=False, unique=True)
     email = pw.CharField(null=False, unique=True)
     password = pw.CharField(null=False)
