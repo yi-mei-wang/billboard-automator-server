@@ -16,6 +16,11 @@ def index():
 def create():
     data = request.get_json()
 
+    # Validation:
+    # 1. Length
+    # 2. Password complexity
+    # 3. Email validity
+
     hashed_password = generate_password_hash(data['password'], method='sha256', salt_length=8)
 
     new_user = User(username=data["username"], password=hashed_password, email=data["email"])
@@ -23,8 +28,10 @@ def create():
     # Give more specific error messages
     try:
         new_user.save()
-        return jsonify({'message': 'User has been created'})
+        return jsonify({'status': 201, 'message': 'User created'})
 
     except IntegrityError as e:
-        print(f"heelo {e}")
-        return jsonify({'message': 'An error occurred'})
+        if 'username' in str(e):
+            return jsonify({'status': 400, 'message': 'Username is taken'})
+        elif 'email' in str(e):
+            return jsonify({'status': 400, 'message': 'Email is taken'})
