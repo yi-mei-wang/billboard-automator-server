@@ -1,11 +1,20 @@
 from app import app
+from cust_app_web.blueprints.images.views import images_blueprint
 from flask import render_template
 from flask_assets import Environment
+from .util.assets import bundles
 
 
 assets = Environment(app)
 assets.register(bundles)
 
+
+# Register blueprints here
+app.register_blueprint(images_blueprint, url_prefix='images')
+
+@app.route('/')
+def home():
+    return render_template('home.html')
 
 @app.errorhandler(500)
 def internal_server_error(e):
