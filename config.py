@@ -29,3 +29,5 @@ class TestingConfig(Config):
     TESTING = True
     DEBUG = True
     ASSETS_DEBUG = True
+
+
