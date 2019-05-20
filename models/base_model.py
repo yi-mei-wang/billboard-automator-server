@@ -5,7 +5,7 @@ from database import db
 
 class BaseModel(pw.Model):
     created_at = pw.DateTimeField(default=datetime.datetime.now)
-    updated_At = pw.DateTimeField(default=datetime.datetime.now)
+    updated_at = pw.DateTimeField(default=datetime.datetime.now)
 
     def save(self, *args, **kwargs):
         self.errors = []
