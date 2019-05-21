@@ -1,7 +1,7 @@
-{% extends _layout.html %} {% block content %}
+{% extends "_layout.html" %} {% block content %}
 
 <form
-  action="url_for('images.create')"
+  action="{{ url_for('images.create') }}"
   method="POST"
   enctype="multipart/form-data"
 >
