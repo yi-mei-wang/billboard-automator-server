@@ -1,7 +1,6 @@
 from app import app
 from clarifai.rest import ClarifaiApp
 import os
-import pysnooper
 
 app = ClarifaiApp(api_key=os.getenv('CLARIFAI_API_KEY'))
 

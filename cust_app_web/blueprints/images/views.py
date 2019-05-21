@@ -21,30 +21,22 @@ def new():
 
 
 @images_blueprint.route('/create', methods=["POST"])
-@pysnooper.snoop('log.txt')
 def create():
     # Obtain paths from uploading to AWS
     paths = handle_upload('user_image')
     urls = full_paths(paths)
 
     # Moderate the content
-    for url in urls:
-        res = moderate(url)
-    # If content is safe for advertising, add to the database
-    # Save to the database
-        
+    errors = moderate(urls)
 
-    # Redirect users to the payment page
+    # If content is safe for advertising
+    if not errors.length():
+        for path in paths:
+            q = Image(order_id='something', path=path)
+            if q.save():
+                # Redirect users to payment
+                return redirect(url_for('images.new'))
+
+
+    # Redirect users back to images.new
     return redirect(url_for('images.new'))
-# Do content moderation by calling an API - extract to helper function
-
-# url_path = handle_upload('user_image')
-
-
-
-# Assume only one file first
-# How to handle multiple uploads?
-
-# If SFW, save to db
-
-# For testing, check time

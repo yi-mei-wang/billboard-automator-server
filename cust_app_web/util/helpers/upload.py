@@ -34,7 +34,7 @@ def handle_file(file_form_name):
         if file and allowed_file(file.filename):
             print(file)
             file.filename = secure_filename(file.filename)
-            file.filename = str(round(time()*987654321))[10:]
+            # file.filename = str(round(time()*987654321))[10:]
             print(file)
     return files
 
