@@ -10,7 +10,7 @@ assets.register(bundles)
 
 
 # Register blueprints here
-app.register_blueprint(images_blueprint, url_prefix='images')
+app.register_blueprint(images_blueprint, url_prefix='/images')
 
 @app.route('/')
 def home():

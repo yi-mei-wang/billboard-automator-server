@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request
-
+from app import app
+from models.image import Image
+from cust_app_web.util.helpers.upload import *
 
 images_blueprint = Blueprint("images", __name__, template_folder='templates')
 
@@ -17,14 +19,16 @@ def new():
 
 @images_blueprint.route('/create', methods=["POST"])
 def create():
-    # Do content moderation by calling an API - extract to helper function
+    return ""
+# Do content moderation by calling an API - extract to helper function
 
-    # Assume only one file first
+# url_path = handle_upload('user_image')
 
-    # If SFW, save to db
 
-    # For testing, check time
 
-    # If time is now, attempt to emit to socket
+# Assume only one file first
+# How to handle multiple uploads?
 
-    # Else no
+# If SFW, save to db
+
+# For testing, check time

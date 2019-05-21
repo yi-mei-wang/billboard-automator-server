@@ -1,14 +1,14 @@
-{% extends _layout.html %}
+{% extends _layout.html %} {% block content %}
 
-{% block content %}
+<form
+  action="url_for('images.create')"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <!-- HOW TO HANDLE MULTIPLE USER IMAGES HERE -->
+  <input type="file" name="user_image" id="images" multiple />
 
-  <form action="url_for('images.create')" method="POST" enctype="multipart/form-data">
-
-    <!-- HOW TO HANDLE MULTIPLE USER IMAGES HERE -->
-    <input type="file" name="user_image" id="images"/>
-
-    <button type="submit">Advertise these for me!</button>
-
-  </form>
+  <button type="submit">Advertise these for me!</button>
+</form>
 
 {% endblock %}
