@@ -2,12 +2,29 @@
 
 {% block content %}
 
-{# <form action="{{ url_for('images.create') }}" class="dropzone" id="mydropzone">
-  <div class="fallback">
-    <input name="file" type="file" multiple />
+  {# Form to allow users to choose their timeslot #}
+  {# Custom upload UI #}
+  <div class="form-container mx-auto">
+    <form action="">
+      <!-- Default unchecked -->
+      <div class="form-control my-4 form-border p-3">
+        <h2>
+          <label for="timeslot">Choose your timeslot here</label>
+        </h2>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+          <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+          <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+        </div>
+      </div>
+    </form>
+    
+    <div class="dropzone form-border" id="mydropzone"></div>
   </div>
-</form> #}
-  <div class="dropzone clsbox" id="mydropzone"></div>
+
 
 
 <script>

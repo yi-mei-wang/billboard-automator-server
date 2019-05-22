@@ -26,7 +26,6 @@ def create():
     paths = handle_upload('file')
     urls = full_paths(paths)
     
-
     # Moderate the content
     errors = moderate(urls)
 
