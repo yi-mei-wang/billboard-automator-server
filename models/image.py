@@ -9,6 +9,7 @@ from models.order import Order
 class Image(BaseModel):
     order_id = pw.ForeignKeyField(Order, backref="pictures")
     path = pw.CharField()
+    status = pw.IntegerField(default=0)
     
     @hybrid_property
     def pict_url(self):

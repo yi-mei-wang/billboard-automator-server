@@ -1,0 +1,42 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+
+{# <form action="{{ url_for('images.create') }}" class="dropzone" id="mydropzone">
+  <div class="fallback">
+    <input name="file" type="file" multiple />
+  </div>
+</form> #}
+  <div class="dropzone clsbox" id="mydropzone"></div>
+
+
+<script>
+
+  // Dropzone class:
+  var myDropzone = new Dropzone("#mydropzone", {
+    url: "{{ url_for('images.create') }}",
+    createImageThumbnails: true,
+    addRemoveLinks: true,
+  
+    init: function() {
+      this.on('error', function(file, errorMessage) {
+        // Display error message from the server
+        console.log(errorMessage)
+        
+      });
+      
+      this.on("success", function(file, serverResponse) {
+        // Called after the file successfully uploaded.
+        console.log(serverResponse)
+        // If the image is already a thumbnail:
+        // this.emit('thumbnail', file, serverResponse.imageUrl);
+
+        // If it needs resizing:
+        // this.createThumbnailFromUrl(file, serverResponse.imageUrl);
+
+      });
+    }
+  });
+</script>
+
+{% endblock content %}
