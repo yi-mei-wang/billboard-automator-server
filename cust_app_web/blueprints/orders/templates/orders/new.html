@@ -22,12 +22,14 @@
       this.on('error', function(file, errorMessage) {
         // Display error message from the server
         console.log(errorMessage)
-        
+        let errorDisplay = document.querySelectorAll('[data-dz-errormessage]');
+        errorDisplay[errorDisplay.length - 1].innerHTML = errorMessage.message;
+
       });
       
       this.on("success", function(file, serverResponse) {
         // Called after the file successfully uploaded.
-        console.log(serverResponse)
+        // console.log(serverResponse)
         // If the image is already a thumbnail:
         // this.emit('thumbnail', file, serverResponse.imageUrl);
 
