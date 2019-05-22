@@ -1,2 +1,15 @@
-{% extends "_layout.html" %} {% block title %} {% endblock %} {% block header %}
-{% endblock %} {% block content %} hello {% endblock %}
+{% extends "_layout.html" %}
+{% block title %} {% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+hello
+
+{% if current_user.is_authenticated %}
+<p><a href="{{ url_for('users.show', username=current_user.name) }}" class="btn">Userpage</a></p>
+<p><a href="{{ url_for('users.logout') }}" class="btn">Log Out</a></p>
+{% else %}
+<p><a href="{{ url_for('users.sign_up') }}" class="btn">Sign Up</a></p>
+<p><a href="{{ url_for('users.sign_in') }}" class="btn">Sign In</a></p>
+{% endif %}
+{% endblock %}

@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 from werkzeug import secure_filename
 
 
-s3 = boto3.client("s3", aws_access_key_id=os.getenv("S3_ACCESS_KEY"), aws_secret_access_key=os.getenv("S3_SECRET_ACCESS_KEY"))
+# s3 = boto3.client("s3", aws_access_key_id=os.getenv("S3_ACCESS_KEY"), aws_secret_access_key=os.getenv("S3_SECRET_ACCESS_KEY"))
 
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
