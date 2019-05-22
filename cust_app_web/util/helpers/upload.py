@@ -20,25 +20,28 @@ def allowed_file(filename):
 
 def handle_file(file_form_name):
     if file_form_name not in request.files:
-        flash("File not found", "info")
+        print("File not found", "info")
         return None
 
-    file = request.files[file_form_name]
+    files = request.files.getlist(file_form_name)
+    print(files)
 
-    if file.filename == "":
-        flash("Please provide a file name", "info")
-        return None
+    for file in files:
+        if file.filename == "":
+            print("Please provide a file name", "info")
+            return None
 
-    if file and allowed_file(file.filename):
-        file.filename = secure_filename(file.filename)
-        file.filename = str(round(time()*100))
-    
-    return file
-
+        if file and allowed_file(file.filename):
+            print(file)
+            file.filename = secure_filename(file.filename)
+            # file.filename = str(round(time()*987654321))[10:]
+            print(file)
+    return files
 
 def upload_to_s3(file, bucket_name, acl="public-read"):
     try:
-        s3.upload_fileob(file,bucket_name, file.filename, ExtraArgs={"ACL": acl, "ContentType": file.content_type})
+        s3.upload_fileobj(file, bucket_name, file.filename, ExtraArgs={"ACL": acl, "ContentType": file.content_type})
+
     
     except Exception as e:
         print(e)
@@ -47,9 +50,21 @@ def upload_to_s3(file, bucket_name, acl="public-read"):
     
     return file.filename
 
-
 def handle_upload(file_form_name):
-    file = handle_file(file_form_name)
-    if not file:
+    files = handle_file(file_form_name)
+    if not files:
         return None
-    return upload_to_s3(file, os.getenv("S3_BUCKET"))
+    
+    paths = []
+    for file in files: 
+        paths.append(upload_to_s3(file, os.getenv("S3_BUCKET")))
+    return paths
+
+
+def full_paths(paths):
+    bucket = os.getenv('S3_BUCKET')
+    AWS_DOMAIN = f'https://s3.amazonaws.com/{bucket}'
+    full_paths = []
+    for path in paths:
+        full_paths.append(f"{AWS_DOMAIN}/{path}")
+    return full_paths

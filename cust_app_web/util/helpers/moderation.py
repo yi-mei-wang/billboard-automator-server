@@ -2,28 +2,25 @@ from app import app
 from clarifai.rest import ClarifaiApp
 import os
 
-app = ClarifaiApp(api_key=os.getev('CLARIFAI_API_KEY'))
+app = ClarifaiApp(api_key=os.getenv('CLARIFAI_API_KEY'))
 
-def moderate():
-    # Do content moderation by calling an API - extract to helper function
-    
-    # Get custom model
-    # model = app.models.get('tobacco')
-    # model.model_version = '5cd2c26325684e46a6f44c4c2f5cbb7f'  # This is optional. Defaults to the latest model version.
+def moderate(urls):
+    # Moderate content to see if it is sfw or contains tobacco
+    models = [app.models.get('tobacco'), app.models.get('moderation')]
 
-    # get the general model
-    model = app.models.get("moderation")
+    errors = []
+    # predict with the chosen models
+    for model in models:
+        for url in urls:
+            response = model.predict_by_url(url=url)
 
-    # predict with the model
-    response = model.predict_by_url(url='https://cdn.pocket-lint.com/r/s/970x/assets/images/136967-gadgets-news-nsfw-are-naked-no-holds-barred-3d-printed-action-figures-the-next-big-thingimage1-lhsv5pxicr.jpg')
+            results = response['outputs'][0]['data']['concepts']
 
-    # response = model.predict_by_url('https://cdn.vox-cdn.com/thumbor/Wm7QhA0wWlG_g3RK_O7o9_KrQ2Y=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/63345165/jabareham_180614_1777_0017.0.jpg')
-
-
-    # How to extract what was the problem
-    results = response['outputs'][0]['data']['concepts']
-    for i in range(len(results)):
-        if results[i]['value'] > 0.5:
-            print(results[i]['name'])
-
-moderate()
+            for i in range(len(results)):
+                if results[i]['value'] > 0.6:
+                    if results[i]['name'] != 'safe':
+                        res = {}
+                        res['pict'] = url
+                        res[results[i]['name']]= results[i]['value']
+                        errors.append(res)
+    return errors
