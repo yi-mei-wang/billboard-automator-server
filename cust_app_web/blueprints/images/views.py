@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, jsonify, render_template, request
 from app import app
 from models.image import Image
 from cust_app_web.util.helpers.upload import *
@@ -23,20 +23,24 @@ def new():
 @images_blueprint.route('/create', methods=["POST"])
 def create():
     # Obtain paths from uploading to AWS
-    paths = handle_upload('user_image')
+    paths = handle_upload('file')
     urls = full_paths(paths)
+    
 
     # Moderate the content
     errors = moderate(urls)
+    print(errors)
 
     # If content is safe for advertising
-    if not errors.length():
+    if not len(errors):
         for path in paths:
-            q = Image(order_id='something', path=path)
+            q = Image(order_id=1329, path=path)
             if q.save():
                 # Redirect users to payment
-                return redirect(url_for('images.new'))
+                return jsonify({'msg' : 'success'})
+                # return redirect(url_for('images.new'))
 
 
     # Redirect users back to images.new
-    return redirect(url_for('images.new'))
+    # return redirect(url_for('images.new'))
+    return jsonify({'msg': 'illegal'})

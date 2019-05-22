@@ -20,15 +20,15 @@ def allowed_file(filename):
 
 def handle_file(file_form_name):
     if file_form_name not in request.files:
-        flash("File not found", "info")
+        print("File not found", "info")
         return None
 
-    files = request.files.getlist('user_image')
+    files = request.files.getlist(file_form_name)
     print(files)
 
     for file in files:
         if file.filename == "":
-            flash("Please provide a file name", "info")
+            print("Please provide a file name", "info")
             return None
 
         if file and allowed_file(file.filename):
