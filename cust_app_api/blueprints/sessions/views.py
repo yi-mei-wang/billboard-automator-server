@@ -9,7 +9,7 @@ from models.user import User
 
 sessions_api_blueprint = Blueprint('sessions_api', __name__)
 
-@sessions_api_blueprint.route('/login')
+@sessions_api_blueprint.route('/login', methods=['POST'])
 def login():
     auth = request.authorization
     print(auth)
