@@ -19,6 +19,8 @@ if os.getenv('FLASK_ENV') == 'production':
 else:
     app.config.from_object("config.DevelopmentConfig")
 
+app.secret_key = os.getenv('APP_SECRET_KEY')
+csrf = CSRFProtect(app)
 
 @app.before_request
 def before_request():

@@ -1,7 +1,7 @@
 import peewee as pw
 from flask_login import UserMixin
 from models.base_model import BaseModel
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(BaseModel, UserMixin):

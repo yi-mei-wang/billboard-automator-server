@@ -1,6 +1,6 @@
-from flask import request, Blueprint, render_template, redirect, url_for
+from flask import request, Blueprint, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
-from peewee import IntegretyError
+from peewee import IntegrityError
 from models.user import User
 from flask_login import current_user, login_required, logout_user, login_user
 
@@ -10,7 +10,7 @@ users_blueprint = Blueprint('users', __name__, template_folder='templates/users'
 @login_required
 def index():
     if current_user.is_active:
-        return render_template('userpage.html', username=current_user.name)
+        return render_template('userpage.html', username=current_user.username)
     else:
         return render_template(url_for('user.login'))
 
@@ -29,10 +29,10 @@ def create():
     new_user = User(username=username, password=password, email=email)
 
     try:
-        new_user.save():
+        new_user.save()
         flash("Successfully Created")
         login_user(new_user)
-        return redirect(url_for("users.show", username=current_user.name))
+        return redirect(url_for("users.show", username=current_user.username))
 
     except IntegrityError as e:
         if 'username' in str(e):
@@ -43,14 +43,14 @@ def create():
 @users_blueprint.route('/sign_in', methods=['GET'])
 def sign_in():
     if current_user.is_active:
-        return redirect(url_for("users.show", username=current_user.name))
+        return redirect(url_for("users.show", username=current_user.username))
     return render_template('signin form.html')
 
 @users_blueprint.route('/sign_in_form', methods=['POST'])
 def user_show():
     current_username = request.form.get('username')
     current_password = request.form.get('password')
-    current_person = User.get_or_none(User.name == current_username)
+    current_person = User.get_or_none(User.username == current_username)
 
     if current_person != None:
         if current_person.login_validate(current_password):
@@ -67,7 +67,7 @@ def user_show():
 @login_required
 def show(username):
     if current_user.is_active:
-        return render_template('userpage.html', username=current_user.name)
+        return render_template('userpage.html', username=current_user.username)
     else:
         return render_template(url_for('user.login'))
 

@@ -1,7 +1,10 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, abort, jsonify, render_template, request
 from app import app
 from models.image import Image
 from cust_app_web.util.helpers.upload import *
+from cust_app_web.util.helpers.moderation import *
+
+import pysnooper
 
 images_blueprint = Blueprint("images", __name__, template_folder='templates')
 
@@ -19,16 +22,23 @@ def new():
 
 @images_blueprint.route('/create', methods=["POST"])
 def create():
-    return ""
-# Do content moderation by calling an API - extract to helper function
+    # Obtain paths from uploading to AWS
+    paths = handle_upload('file')
+    urls = full_paths(paths)
+    
+    # Moderate the content
+    errors = moderate(urls)
 
-# url_path = handle_upload('user_image')
+    # If content is safe for advertising
+    if not len(errors):
+        for path in paths:
+            q = Image(order_id=1, path=path)
+            if q.save():
+                # Redirect users to payment
+                return jsonify({'msg' : 'success'})
+                # return redirect(url_for('images.new'))
 
 
-
-# Assume only one file first
-# How to handle multiple uploads?
-
-# If SFW, save to db
-
-# For testing, check time
+    # How do I trigger an error response?
+    abort(400)
+    return jsonify({'msg': 'illegal'})
