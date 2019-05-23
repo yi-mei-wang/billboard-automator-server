@@ -19,7 +19,9 @@ class Image(BaseModel):
     
     @hybrid_property
     def pict_url(self):
-        AWS_DOMAIN = os.getenv('AWS_DOMAIN')
+        # Returns full url of image
+        bucket = os.getenv('S3_BUCKET')
+        AWS_DOMAIN = f'https://s3.amazonaws.com/{bucket}'
         return f"{AWS_DOMAIN}/{self.path}"
 
     def pass_mod(self):
