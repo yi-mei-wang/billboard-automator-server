@@ -28,7 +28,7 @@ def new():
 def create():
     ########## TIME SLOT #############
     # Get the current_user
-    user = current_user
+    # user = current_user
     # Get the chosen date and time slot
     time_slot = request.form.get('time-slot')
     # Create a new Order entry if time slot if not taken
