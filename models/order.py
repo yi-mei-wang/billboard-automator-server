@@ -14,7 +14,6 @@ class Order(BaseModel):
     user_id = pw.ForeignKeyField(User, backref="orders", unique=False)
     start_time = pw.DateTimeField(null=False)
     # End time is always start + 15 mins
-    end_time = pw.DateTimeField(null=False)
     status = pw.IntegerField(default=Status.UNVERIFIED.value)
 
     def save(self, *args, **kwargs):
