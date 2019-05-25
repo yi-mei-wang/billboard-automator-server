@@ -1,3 +1,4 @@
 {
-  "python.pythonPath": "/Users/Wang/anaconda3/envs/fps/bin/python"
+  "python.pythonPath": "/Users/Wang/anaconda3/envs/fps/bin/python",
+  "python.formatting.provider": "autopep8"
 }

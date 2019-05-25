@@ -1,4 +1,5 @@
 asn1crypto==0.24.0
+autopep8==1.4.4
 boto3==1.9.151
 botocore==1.12.151
 certifi==2019.3.9
@@ -14,6 +15,7 @@ docutils==0.14
 Flask==1.0.2
 Flask-Assets==0.12
 Flask-Cors==3.0.7
+Flask-DotEnv==0.1.2
 Flask-Login==0.4.1
 Flask-SocketIO==4.0.0
 Flask-WTF==0.14.2
@@ -31,6 +33,7 @@ peewee==3.9.5
 peewee-db-evolve==3.7.0
 protobuf==3.7.1
 psycopg2-binary==2.8.2
+pycodestyle==2.5.0
 pycparser==2.19
 PyJWT==1.7.1
 PySnooper==0.0.39

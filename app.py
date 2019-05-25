@@ -1,11 +1,13 @@
-import os 
+import os
 import config
 from flask import Flask
+from flask_dotenv import DotEnv
 from flask_wtf.csrf import CSRFProtect
 from models.base_model import db
 
 
-web_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cust_app_web')
+web_dir = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), 'cust_app_web')
 
 
 app = Flask('Ad Automator', root_path=web_dir)
