@@ -29,3 +29,4 @@ class Image(BaseModel):
     
     def fail_mod(self):
         self.status = Status.FAILED.value
+

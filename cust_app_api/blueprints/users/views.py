@@ -5,7 +5,7 @@ import sys
 import uuid
 from models.user import User
 
-
+    
 users_api_blueprint = Blueprint('users_api', __name__)
 
 
