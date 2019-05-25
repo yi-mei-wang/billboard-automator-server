@@ -15,7 +15,7 @@ timeslots_api_blueprint = Blueprint('timeslots_api', __name__)
 def show():
     #https://<url>/api/v1/timeslots/show?d=<d>&m=<m>&y=<y>
     d = int(request.args.get('d'))
-    m = int(request.args.get('m')) + 1
+    m = int(request.args.get('m'))
     y = int(request.args.get('y'))
 
     # Select all the orders that match the selected_date
