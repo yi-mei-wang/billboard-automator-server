@@ -23,7 +23,8 @@ def create():
     # user = current_user
     # Get the chosen date and time slot
     files = request.files.getlist('file')
-    chosen_date = datetime.datetime.fromtimestamp(int(request.form.get('chosenDate'))/1000)
+    chosen_date = datetime.datetime.utcfromtimestamp(
+        int(request.form.get('chosenDate'))/1000)
 
     # Create a new Order entry if time slot if not taken
     try:
@@ -32,12 +33,12 @@ def create():
     except IntegrityError:
         # Bad UX if user has to reupload everything, how do I solve this?
         print('Time slot taken, please choose another one', 'warning')
-    
+
     # ############ IMAGE ###############
     # Obtain paths from uploading to AWS
     paths = handle_upload('file')
     urls = full_paths(paths)
-    
+
     # Moderate the content
     # errors = moderate(urls)
     errors = []
@@ -47,9 +48,8 @@ def create():
             q = Image(order_id=1, path=path)
             q.save()
     # Redirect users to payment
-    return jsonify({'msg' : 'success'})
+    return jsonify({'msg': 'success'})
     # return redirect(url_for('images.new'))
-
 
     # How do I trigger an error response?
     abort(400)
