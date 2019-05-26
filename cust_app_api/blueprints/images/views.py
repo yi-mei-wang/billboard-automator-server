@@ -1,16 +1,25 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, make_response, request
 from werkzeug.security import check_password_hash
-from models.user import User
 from models.image import Image
+from models.order import Order
+from models.user import User
 
 images_api_blueprint = Blueprint('images_api', __name__)
 
 
 @images_api_blueprint.route('/', methods=['GET'])
-def get_all_images():
-    #
-    # Only choose those that passed the moderation
-    images = Image.select().where(Image.status == 1)
+def get_current_images():
+    # Get the time from the query
+    data = request.get_json()
+    query_time = datetime.utcfromtimestamp(int(data['utcTime'])/1000)
+    # Reset minute to the previous 15 min block
+    query_min = query_time.minute
+    start_min = query_min - (query_min % 15)
+    start_time = query_time.replace(minute=start_min, second=0, microsecond=0)
+    # Only choose those that passed the moderation AND belongs to the orders scheduled at start_time
+    images = Image.select().join(Order).where(
+        Image.status == 1, Order.start_time == start_time)
     output = []
     for img in images:
         image_data = {}
@@ -19,7 +28,6 @@ def get_all_images():
         image_data['status'] = img.status
         image_data['pict_url'] = img.pict_url
         output.append(image_data)
-    breakpoint()
 
     return jsonify({'images': output})
 
