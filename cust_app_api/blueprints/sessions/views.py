@@ -26,6 +26,7 @@ def login():
     if check_password_hash(user.password, auth['password']):
         token = jwt.encode({'public_id': user.public_id, 'exp': datetime.datetime.utcnow(
         ) + datetime.timedelta(minutes=30)}, app.config["SECRET_KEY"])
-        return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+
+        return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
 
     return make_response('Password incorrect', 401, {'WWW-Authenticate': 'Basic realm="Login required!"'})
