@@ -6,6 +6,7 @@ import os
 # app = ClarifaiApp(api_key=os.getenv('CLARIFAI_API_KEY'))
 
 
+
 def moderate(urls):
     # Moderate content to see if it is sfw or contains tobacco
     models = [app.models.get('general'), app.models.get('moderation')]
