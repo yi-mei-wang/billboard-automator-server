@@ -45,7 +45,7 @@ def create():
     # Give more specific error messages
     try:
         new_user.save()
-        token = user.encode_auth_token()
+        token = new_user.encode_auth_token()
 
         return jsonify({'auth_token': token.decode('UTF-8'), 'status': 201, 'message': 'User created', 'user': {'id': str(new_user.id), 'username': new_user.username}})
 
