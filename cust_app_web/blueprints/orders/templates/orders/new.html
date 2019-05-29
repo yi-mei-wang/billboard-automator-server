@@ -1,0 +1,62 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+
+  {# Form to allow users to choose their timeslot #}
+  {# Custom upload UI #}
+  <div class="form-container mx-auto">
+    <form action="">
+      <!-- Default unchecked -->
+      <div class="form-control my-4 form-border p-3">
+        <h2>
+          <label for="timeslot">Choose your timeslot here</label>
+        </h2>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+          <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+          <label class="custom-control-label" for="defaultUnchecked">Default unchecked</label>
+        </div>
+      </div>
+    </form>
+    
+    <div class="dropzone form-border" id="mydropzone"></div>
+  </div>
+
+
+
+<script>
+
+  // Dropzone class:
+  var myDropzone = new Dropzone("#mydropzone", {
+    url: "{{ url_for('images.create') }}",
+    createImageThumbnails: true,
+    addRemoveLinks: true,
+  
+    init: function() {
+      this.on('error', function(file, errorMessage) {
+        // Display error message from the server
+        console.log(errorMessage)
+        let errorDisplay = document.querySelectorAll('[data-dz-errormessage]');
+        console.log(errorDisplay)
+        errorDisplay[errorDisplay.length - 1].innerHTML = errorMessage;
+
+      });
+      
+      this.on("success", function(file, serverResponse) {
+        // Called after the file successfully uploaded.
+        // console.log(serverResponse)
+        // If the image is already a thumbnail:
+        // this.emit('thumbnail', file, serverResponse.imageUrl);
+
+        // If it needs resizing:
+        // this.createThumbnailFromUrl(file, serverResponse.imageUrl);
+
+      });
+    }
+  });
+</script>
+
+{% endblock content %}
