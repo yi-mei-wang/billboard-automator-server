@@ -14,15 +14,48 @@ orders_api_blueprint = Blueprint("orders_api", __name__)
 @orders_api_blueprint.route('/')
 def index():
     # Display all the orders
+    # When given a user id, fetch all the orders related to that user
     return "hkfds"
+
+
+@orders_api_blueprint.route('/show')
+def show():
+    # Before or after (-1 is before, 1 is after)
+    before_or_after = request.args.get('q')
+    # When given a user id, fetch all the orders related to that user
+    post_data = request.get_json()
+    id = User.decode_auth_token(post_data['auth_token'])
+
+    user = User.get_by_id(id)
+    # Get all the orders belonging to the user (> means future, < means past)
+    if before_or_after == 1:
+        orders = Order.select().where(Order.user_id == user.id,
+                                      Order.start_time > datetime.datetime.now())
+    elif before_or_after == -1:
+        orders = Order.select().where(Order.user_id == user.id,
+                                      Order.start_time < datetime.datetime.now())
+
+    response = []
+    for order in orders:
+        # Get all the images from each order
+        imgs = Image.select().join(Order).where(
+            Image.status == 1, Order.user_id == user.id)
+
+        images = []
+        for img in imgs:
+            img_url = img.pict_url
+            images.append(img_url)
+
+        data = {'order_id': order.id, 'images': images,
+                'start_time': order.start_time}
+
+        response.append(data)
+    return jsonify(response)
 
 
 @orders_api_blueprint.route('/create', methods=["POST"])
 def create():
     ########## TIME SLOT #############
-    # Get the current_user
-    # user = current_user
-    # Get the chosen date and time slot
     files = request.files.getlist('file')
     chosen_date = datetime.datetime.utcfromtimestamp(
         int(request.form.get('chosenDate'))/1000)

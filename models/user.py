@@ -41,7 +41,7 @@ class User(BaseModel, UserMixin):
         """
         Decodes the auth token
         :param auth_token:
-        :return: integer|string
+        :return: integer|tring
         """
         try:
             payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
