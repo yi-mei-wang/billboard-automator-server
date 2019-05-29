@@ -24,18 +24,20 @@ def create():
     paths = handle_upload('file')
     urls = full_paths(paths)
 
-    # Moderate the content
-    errors = moderate(urls)
+    errors = {}
 
     # If content is safe for advertising
-    if not len(errors):
-        for path in paths:
-            q = Image(order_id=1, path=path)
-            if q.save():
-                # Redirect users to payment
+    for i, path in enumerate(paths):
+        img = Image(order_id=1, path=path)
+        # Do the moderation
+        errs = img.moderate()
+        if not errs:
+            # pass -> save
+            if img.save():
+                # ??
                 return jsonify({'msg': 'success'})
-                # return redirect(url_for('images.new'))
-
-    # How do I trigger an error response?
-    abort(400)
-    return jsonify({'msg': 'illegal'})
+        # fail append error along with
+        errors[i] = errs
+    print(errors)
+    breakpoint()
+    return jsonify({'msg': 'illegal', 'errors': errors})

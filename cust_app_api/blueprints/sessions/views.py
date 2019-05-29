@@ -4,7 +4,7 @@ import datetime
 import jwt
 
 from app import app
-from models.user import User
+from models.user import *
 
 
 sessions_api_blueprint = Blueprint('sessions_api', __name__)
@@ -23,9 +23,11 @@ def login():
     if not user:
         return make_response('User not found', 408, {'WWW-Authenticate': 'Basic realm="Login required!"'})
 
+    # If password is valid
     if check_password_hash(user.password, auth['password']):
-        token = jwt.encode({'public_id': user.public_id, 'exp': datetime.datetime.utcnow(
-        ) + datetime.timedelta(minutes=30)}, app.config["SECRET_KEY"])
+        token = user.encode_auth_token()
+        # token = jwt.encode({'public_id': user.public_id, 'exp': datetime.datetime.utcnow(
+        # ) + datetime.timedelta(minutes=30)}, app.config["SECRET_KEY"])
 
         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
 

@@ -40,7 +40,8 @@
         // Display error message from the server
         console.log(errorMessage)
         let errorDisplay = document.querySelectorAll('[data-dz-errormessage]');
-        errorDisplay[errorDisplay.length - 1].innerHTML = errorMessage.message;
+        console.log(errorDisplay)
+        errorDisplay[errorDisplay.length - 1].innerHTML = errorMessage;
 
       });
       

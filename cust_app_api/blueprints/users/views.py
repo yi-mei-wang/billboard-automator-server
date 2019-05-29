@@ -9,7 +9,7 @@ import uuid
 from app import app
 from models.user import User
 
-    
+
 users_api_blueprint = Blueprint('users_api', __name__)
 
 
@@ -21,7 +21,7 @@ def index():
 @users_api_blueprint.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
-    breakpoint()
+
     # Validation:
     # 1. Check if all fields are keyed in
     # 2. Length
@@ -45,10 +45,10 @@ def create():
     # Give more specific error messages
     try:
         new_user.save()
-        token = jwt.encode({'public_id': new_user.public_id, 'exp': datetime.datetime.utcnow(
+        token = jwt.encode({'public_id': str(new_user.public_id), 'exp': datetime.datetime.utcnow(
         ) + datetime.timedelta(minutes=30)}, app.config["SECRET_KEY"])
 
-        return jsonify({'auth_token': token.decode('UTF-8'), 'status': 201, 'message': 'User created', 'user': {'id': new_user.public_id, 'username': new_user.username}})
+        return jsonify({'auth_token': token.decode('UTF-8'), 'status': 201, 'message': 'User created', 'user': {'id': str(new_user.public_id), 'username': new_user.username}})
 
     # When username and email are taken
     except IntegrityError as e:

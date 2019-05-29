@@ -350,7 +350,7 @@ var Dropzone = (function(_Emitter) {
            * How the images should be scaled down in case both, `thumbnailWidth` and `thumbnailHeight` are provided.
            * Can be either `contain` or `crop`.
            */
-          thumbnailMethod: "contain",
+          thumbnailMethod: "crop",
 
           /**
            * If set, images will be resized to these dimensions before being **uploaded**.

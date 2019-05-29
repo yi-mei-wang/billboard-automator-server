@@ -17,9 +17,9 @@ def get_current_images():
     query_min = query_time.minute
     start_min = query_min - (query_min % 15)
     start_time = query_time.replace(minute=start_min, second=0, microsecond=0)
-    # Only choose those that passed the moderation AND belongs to the orders scheduled at start_time
+    # Only choose those that passed the moderation (1) AND belongs to the orders scheduled at start_time
     images = Image.select().join(Order).where(
-        Image.status == 0, Order.start_time == start_time)
+        Image.status == 1, Order.start_time == start_time)
     output = []
     for img in images:
         # image_data = {}
@@ -28,6 +28,7 @@ def get_current_images():
         # image_data['status'] = img.status
         # image_data['pict_url'] = img.pict_url
         output.append(img.pict_url)
+    print(output)
 
     return jsonify({'images': output})
 
