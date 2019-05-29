@@ -32,7 +32,7 @@ def create():
         # Do the moderation
         errs = img.moderate()
         if not errs:
-            # pass -> save
+            # pass -> modify and save
             if img.save():
                 # ??
                 return jsonify({'msg': 'success'})

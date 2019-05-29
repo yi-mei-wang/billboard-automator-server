@@ -7,7 +7,7 @@ def parse_db_url(database_url):
     return {
         'user': parsed.username,
         'password': parsed.password,
-        'host':parsed.hostname,
+        'host': parsed.hostname,
         'port': parsed.port,
         'database': parsed.path[1:]
     }
@@ -20,20 +20,20 @@ def return_db():
         from playhouse.postgres_ext import PostgresqlExtDatabase
 
         return PostgresqlExtDatabase(db_config['database'], user=db_config.get('user', None),
-        password=db_config.get('password', None),
-        host=db_config.get('host', 'localhost'),
-        port=db_config.get('port', '5432')
-        )
+                                     password=db_config.get('password', None),
+                                     host=db_config.get('host', 'localhost'),
+                                     port=db_config.get('port', '5432')
+                                     )
     else:
         from playhouse.pool import PooledPostgresqlExtDatabase
 
         return PooledPostgresqlExtDatabase(
             db_config['database'],
-            max_connections=os.getenv('DB_POOL', 5),
+            max_connections=os.getenv('DB_POOL', 15),
             stale_timeout=os.getenv('DB_TIMEOUT', 300),
             user=db_config.get('user', None),
-            password=db_config.get('password', None),host=db_config.get('host', 'localhost'),port=db_config.get('port', '5432')
+            password=db_config.get('password', None), host=db_config.get('host', 'localhost'), port=db_config.get('port', '5432')
         )
 
-db = return_db()
 
+db = return_db()

@@ -13,7 +13,6 @@ class Order(BaseModel):
 
     user_id = pw.ForeignKeyField(User, backref="orders", unique=False)
     start_time = pw.DateTimeField(null=False)
-    # End time is always start + 15 mins
     status = pw.IntegerField(default=Status.UNVERIFIED.value)
 
     def save(self, *args, **kwargs):
@@ -25,12 +24,8 @@ class Order(BaseModel):
         else:
             return 0
 
-    # def end_time(self):
-    #     print(self.start_time)
-    #     self.end_time = datetime.datetime(self.start_time) + datetime.timedelta(minutes=15)
-
     def pass_mod(self):
-        self.status = Status.PASSED.value
-    
+        self.status = Order.Status.PASSED.value
+
     def fail_mod(self):
-        self.status = Status.FAILED.value
+        self.status = Order.Status.FAILED.value

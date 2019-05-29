@@ -28,6 +28,6 @@ def login():
     # If password is valid
     if check_password_hash(user.password, auth['password']):
         token = user.encode_auth_token()
-        return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
+        return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 
     return make_response('Password incorrect', 401, {'WWW-Authenticate': 'Basic realm="Login required!"'})

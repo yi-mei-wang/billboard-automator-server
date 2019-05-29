@@ -45,10 +45,9 @@ def create():
     # Give more specific error messages
     try:
         new_user.save()
-        token = jwt.encode({'public_id': str(new_user.public_id), 'exp': datetime.datetime.utcnow(
-        ) + datetime.timedelta(minutes=30)}, app.config["SECRET_KEY"])
+        token = user.encode_auth_token()
 
-        return jsonify({'auth_token': token.decode('UTF-8'), 'status': 201, 'message': 'User created', 'user': {'id': str(new_user.public_id), 'username': new_user.username}})
+        return jsonify({'auth_token': token.decode('UTF-8'), 'status': 201, 'message': 'User created', 'user': {'id': str(new_user.id), 'username': new_user.username}})
 
     # When username and email are taken
     except IntegrityError as e:

@@ -31,10 +31,10 @@ class Image(BaseModel):
         return f"{AWS_DOMAIN}/{self.path}"
 
     def pass_mod(self):
-        self.status = Status.PASSED.value
+        self.status = Image.Status.PASSED.value
 
     def fail_mod(self):
-        self.status = Status.FAILED.value
+        self.status = Image.Status.FAILED.value
 
     @pysnooper.snoop('log.txt')
     def moderate(self):

@@ -68,7 +68,7 @@ def create():
     chosen_date = datetime.datetime.utcfromtimestamp(
         int(request.form.get('chosenDate'))/1000)
     auth_token = request.form.get('auth_token')
-    user_id = User.decode_auth_token()
+    user_id = User.decode_auth_token(auth_token)
     user = User.get_by_id(user_id)
     # Create a new Order entry if time slot if not taken
     try:
@@ -89,12 +89,23 @@ def create():
         img = Image(order_id=order.id, path=path)
         # Do the moderation
         errs = img.moderate()
-        # If there are no errors
+        # If there are no rejects
         if not errs:
             # pass -> save
+            img.pass_mod()
             if not img.save():
                 print('cry')
         # If there are errors, append error to main json
         errors[i] = errs
-    print(errors)
-    return jsonify({'status': 'ok', 'errors': errors})
+
+    return jsonify({'status': 'ok', 'errors': errors, "order_id": order.id})
+
+
+@orders_api_blueprint.route('/verify', methods=["GET"])
+def verify():
+    # Verify that all the images passed the moderation
+    data = request.get_json()
+    order_id = data['order_id']
+    order = Order.get_by_id(order_id)
+    order.pass_mod()
+    return jsonify({'status': 'ok'})
