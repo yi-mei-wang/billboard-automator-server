@@ -15,7 +15,6 @@ def index():
     # Display all the orders
     return "hkfds"
 
-
 @orders_api_blueprint.route('/create', methods=["POST"])
 def create():
     ########## TIME SLOT #############

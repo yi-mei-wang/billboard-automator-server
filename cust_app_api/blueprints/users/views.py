@@ -39,7 +39,7 @@ def create():
     hashed_password = generate_password_hash(
         data['password'], method='sha256', salt_length=8)
 
-    new_user = User(username=data["username"], password=hashed_password,
+    new_user = User(username=data["username"], password=data["password"],
                     email=data["email"], public_id=uuid.uuid4())
 
     # Give more specific error messages
