@@ -1,6 +1,9 @@
 import os
 import config
 from flask import Flask
+# from flask_jwt_extended import (
+#     JWTManager
+# )
 from flask_dotenv import DotEnv
 from flask_wtf.csrf import CSRFProtect
 from models.base_model import db
@@ -12,6 +15,7 @@ web_dir = os.path.join(os.path.dirname(
 
 app = Flask('Ad Automator', root_path=web_dir)
 
+# jwt = JWTManager(app)
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 

@@ -39,5 +39,4 @@ def create():
         # fail append error along with
         errors[i] = errs
     print(errors)
-    breakpoint()
     return jsonify({'msg': 'illegal', 'errors': errors})

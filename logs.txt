@@ -1,0 +1,29 @@
+17:10:11.006078 call        16 def login():
+17:10:11.006768 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+17:10:11.009771 line        19     if not auth or not auth['username'] or not auth['password']:
+17:10:11.013017 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+17:10:11.022607 line        23     print(user)
+17:10:11.024876 line        25     if not user:
+17:10:11.025280 line        29     if check_password_hash(user.password, auth['password']):
+17:10:11.028797 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.JDQJu8QCioJqCgtI_r6ifAosMh8ObZ5RZUT4HMwavOM'
+17:10:11.032262 line        33         return jsonify({'auth_token': token, 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
+17:10:11.033499 exception   33         return jsonify({'auth_token': token, 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
+TypeError: Object of type bytes is not JSON serializable
+Call ended by exception
+17:11:42.731069 call        16 def login():
+17:11:42.734287 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+17:11:42.737862 line        19     if not auth or not auth['username'] or not auth['password']:
+17:11:42.738251 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+17:11:42.752843 line        23     print(user)
+17:11:42.755890 line        25     if not user:
+17:11:42.756263 line        29     if check_password_hash(user.password, auth['password']):
+17:11:42.756987 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.qGrPVcB_moL_wHln3zWNs4VOC-ZEnxEOjcnK26MDsSw'
+17:11:42.758848 line        33         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
+17:11:42.760369 return      33         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.public_id, 'username': user.username}})
+Return value:.. <Response 314 bytes [200 OK]>

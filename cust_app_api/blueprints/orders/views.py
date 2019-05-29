@@ -23,15 +23,23 @@ def show():
     # Before or after (-1 is before, 1 is after)
     before_or_after = request.args.get('q')
     # When given a user id, fetch all the orders related to that user
-    post_data = request.get_json()
-    id = User.decode_auth_token(post_data['auth_token'])
+
+    auth_header = request.headers.get('Authorization')
+
+    if not auth_header:
+        return jsonify({'status': '400', 'errors': 'No Auth Header'})
+
+    auth_token = auth_header.split(" ")[1]
+    id = User.decode_auth_token(auth_token)
 
     user = User.get_by_id(id)
+
     # Get all the orders belonging to the user (> means future, < means past)
-    if before_or_after == 1:
+    orders = "liren"
+    if before_or_after == "1":
         orders = Order.select().where(Order.user_id == user.id,
                                       Order.start_time > datetime.datetime.now())
-    elif before_or_after == -1:
+    elif before_or_after == "-1":
         orders = Order.select().where(Order.user_id == user.id,
                                       Order.start_time < datetime.datetime.now())
 
@@ -48,8 +56,8 @@ def show():
 
         data = {'order_id': order.id, 'images': images,
                 'start_time': order.start_time}
-
         response.append(data)
+
     return jsonify(response)
 
 
@@ -60,7 +68,7 @@ def create():
     chosen_date = datetime.datetime.utcfromtimestamp(
         int(request.form.get('chosenDate'))/1000)
     auth_token = request.form.get('auth_token')
-    user_id = User.decode_auth_token(auth_token)
+    user_id = User.decode_auth_token()
     user = User.get_by_id(user_id)
     # Create a new Order entry if time slot if not taken
     try:
