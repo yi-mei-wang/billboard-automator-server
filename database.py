@@ -3,7 +3,6 @@ import psycopg2
 from urllib.parse import urlparse
 
 
-
 def parse_db_url(database_url):
     parsed = urlparse(database_url)
     return {
@@ -17,7 +16,6 @@ def parse_db_url(database_url):
 
 def return_db():
     db_config = parse_db_url(os.getenv('DATABASE_URL'))
-
     if os.getenv('MIGRATION', '0') == '1':
         from playhouse.postgres_ext import PostgresqlExtDatabase
 

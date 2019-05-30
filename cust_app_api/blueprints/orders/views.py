@@ -38,16 +38,16 @@ def show():
     orders = "liren"
     if before_or_after == "1":
         orders = Order.select().where(Order.user_id == user.id,
-                                      Order.start_time > datetime.datetime.now())
+                                      Order.start_time > datetime.datetime.now(), Order.status == 1)
     elif before_or_after == "-1":
         orders = Order.select().where(Order.user_id == user.id,
-                                      Order.start_time < datetime.datetime.now())
+                                      Order.start_time < datetime.datetime.now(), Order.status == 1)
 
     response = []
     for order in orders:
         # Get all the images from each order
         imgs = Image.select().join(Order).where(
-            Image.status == 1, Order.user_id == user.id)
+            Image.status == 1, Order.id == order.id)
 
         images = []
         for img in imgs:

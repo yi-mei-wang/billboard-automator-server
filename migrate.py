@@ -8,15 +8,14 @@ if not os.getenv('FLASK_ENV') == 'production':
     from dotenv import load_dotenv
     load_dotenv()
 
-
 import peeweedbevolve
-from models import *
+from models.user import User
 from models.base_model import db
 
 print("Running Migration VROOM")
 if os.getenv('FLASK_ENV') == 'production':
     db.evolve(ignore_tables={'base_model'},
-    interactive=False)
+              interactive=False)
 else:
     db.evolve(ignore_tables={'base_model'})
 print("Finish Migration YAY")
