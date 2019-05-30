@@ -9,7 +9,7 @@ if not os.getenv('FLASK_ENV') == 'production':
     load_dotenv()
 
 import peeweedbevolve
-from models.user import User
+from models import *
 from models.base_model import db
 
 print("Running Migration VROOM")
