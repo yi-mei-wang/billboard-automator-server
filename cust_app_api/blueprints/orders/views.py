@@ -1,11 +1,13 @@
 import datetime
 from flask import Blueprint, abort, jsonify, request
 from peewee import IntegrityError
-from cust_app_web.util.helpers.upload import *
-from cust_app_web.util.helpers.moderation import *
+from util.helpers.upload import *
+from util.helpers.moderation import *
 from models.image import *
 from models.order import *
 from models.user import *
+
+import pysnooper
 
 
 orders_api_blueprint = Blueprint("orders_api", __name__)
@@ -19,6 +21,7 @@ def index():
 
 
 @orders_api_blueprint.route('/show')
+@pysnooper.snoop('log.txt')
 def show():
     # Before or after (-1 is before, 1 is after)
     before_or_after = request.args.get('q')
@@ -106,6 +109,6 @@ def verify():
     # Verify that all the images passed the moderation
     data = request.get_json()
     order_id = data['order_id']
-    order = Order.get_by_id(order_id)
+    order = Order.get_by_id(int(order_id))
     order.pass_mod()
     return jsonify({'status': 'ok'})

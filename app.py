@@ -10,7 +10,7 @@ from models.base_model import db
 
 
 web_dir = os.path.join(os.path.dirname(
-    os.path.abspath(__file__)), 'cust_app_web')
+    os.path.abspath(__file__)), 'cust_app_api')
 
 
 app = Flask('Ad Automator', root_path=web_dir)

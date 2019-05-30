@@ -1,0 +1,2482 @@
+Starting var:.. self = <Image: None>
+15:29:49.293251 call        40     def moderate(self):
+15:29:49.338546 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x106f055...larifai.rest.client.Model object at 0x10ad624a8>]
+15:29:51.468319 line        42         errors = []
+New var:....... errors = []
+15:29:51.470556 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x106f05588>
+15:29:51.471121 line        44             res = {}
+New var:....... res = {}
+15:29:51.471635 line        45             response = model.predict_by_url(
+15:29:51.471924 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+15:29:52.067158 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+15:29:52.069542 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:29:52.070263 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.070601 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:29:52.071278 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.071601 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:29:52.072159 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.072452 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:29:52.073006 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.073356 line        48             for i, v in enumerate(results):
+15:29:52.073647 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x10ad624a8>
+15:29:52.074065 line        44             res = {}
+15:29:52.074346 line        45             response = model.predict_by_url(
+15:29:52.074617 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+15:29:52.547483 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+15:29:52.549836 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+15:29:52.550545 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.550880 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+15:29:52.551565 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.551892 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+15:29:52.552451 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.552866 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+15:29:52.553578 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.553895 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+15:29:52.554445 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:29:52.554738 line        48             for i, v in enumerate(results):
+15:29:52.555009 line        43         for model in models:
+15:29:52.555281 line        53         return errors
+15:29:52.555551 return      53         return errors
+Return value:.. []
+Starting var:.. self = <Image: None>
+15:31:57.227704 call        40     def moderate(self):
+15:31:57.228217 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x109b6ec...larifai.rest.client.Model object at 0x109b6ec50>]
+15:31:57.593980 line        42         errors = []
+New var:....... errors = []
+15:31:57.602683 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x109b6ec88>
+15:31:57.609237 line        44             res = {}
+New var:....... res = {}
+15:31:57.610297 line        45             response = model.predict_by_url(
+15:31:57.610866 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+15:31:58.434619 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+15:31:58.436954 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:31:58.437647 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.437943 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:31:58.438510 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.438849 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:31:58.439825 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.440250 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+15:31:58.440833 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.441173 line        48             for i, v in enumerate(results):
+15:31:58.441737 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x109b6ec50>
+15:31:58.445572 line        44             res = {}
+15:31:58.446277 line        45             response = model.predict_by_url(
+15:31:58.446820 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+15:31:58.907262 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+15:31:58.910021 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+15:31:58.915250 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.916231 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+15:31:58.919609 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.921147 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+15:31:58.924092 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.924462 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+15:31:58.925144 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.925481 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+15:31:58.926398 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+15:31:58.926782 line        48             for i, v in enumerate(results):
+15:31:58.927172 line        43         for model in models:
+15:31:58.927907 line        53         return errors
+15:31:58.928577 return      53         return errors
+Return value:.. []
+15:36:48.182135 call        25 def show():
+15:36:48.186509 call        25 def show():
+15:36:48.189622 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+15:36:48.191300 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+15:36:48.193665 line        30     auth_header = request.headers.get('Authorization')
+15:36:48.197380 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.201395 line        32     if not auth_header:
+15:36:48.201812 line        35     auth_token = auth_header.split(" ")[1]
+15:36:48.201146 line        32     if not auth_header:
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.202950 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.203168 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:36:48.207623 line        38     user = User.get_by_id(id)
+15:36:48.207876 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:36:48.215813 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 26>
+New var:....... user = <User: 26>
+15:36:48.233975 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:36:48.235893 line        41     orders = "liren"
+15:36:48.236188 line        42     if before_or_after == "1":
+15:36:48.236669 line        43         orders = Order.select().where(Order.user_id == user.id,
+New var:....... orders = 'liren'
+15:36:48.237203 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+15:36:48.237938 line        42     if before_or_after == "1":
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682588>
+15:36:48.238831 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.239453 line        49     response = []
+15:36:48.239833 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+New var:....... response = []
+15:36:48.241050 line        50     for order in orders:
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682358>
+15:36:48.244980 line        49     response = []
+15:36:48.247057 exception   50     for order in orders:
+New var:....... response = []
+StopIteration
+15:36:48.248505 line        50     for order in orders:
+15:36:48.248702 line        64     return jsonify(response)
+15:36:48.257271 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+15:36:48.265977 exception   50     for order in orders:
+StopIteration
+15:36:48.276710 call        25 def show():
+15:36:48.278074 line        27     before_or_after = request.args.get('q')
+15:36:48.277890 line        64     return jsonify(response)
+New var:....... before_or_after = '-1'
+15:36:48.281028 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.297675 line        32     if not auth_header:
+15:36:48.298205 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.299392 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:36:48.304350 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 26>
+15:36:48.300210 return      64     return jsonify(response)
+15:36:48.322852 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:36:48.325741 line        42     if before_or_after == "1":
+15:36:48.326600 line        45     elif before_or_after == "-1":
+15:36:48.329815 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.330667 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x110bb7f28>
+15:36:48.334285 line        49     response = []
+New var:....... response = []
+15:36:48.336507 line        50     for order in orders:
+New var:....... order = <Order: 158>
+15:36:48.348294 line        52         imgs = Image.select().join(Order).where(
+Return value:.. <Response 3 bytes [200 OK]>
+15:36:48.351068 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x1136923c8>
+15:36:48.355581 line        55         images = []
+New var:....... images = []
+15:36:48.358894 line        56         for img in imgs:
+15:36:48.362606 call        25 def show():
+15:36:48.366607 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+15:36:48.370204 line        30     auth_header = request.headers.get('Authorization')
+New var:....... img = <Image: 156>
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.373350 line        57             img_url = img.pict_url
+15:36:48.373828 line        32     if not auth_header:
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:36:48.377560 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.377977 line        58             images.append(img_url)
+15:36:48.381247 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:36:48.385511 line        38     user = User.get_by_id(id)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:36:48.390822 line        56         for img in imgs:
+15:36:48.391555 exception   56         for img in imgs:
+New var:....... user = <User: 26>
+StopIteration
+15:36:48.396617 line        60         data = {'order_id': order.id, 'images': images,
+15:36:48.396195 line        41     orders = "liren"
+15:36:48.400020 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+New var:....... orders = 'liren'
+15:36:48.403572 line        42     if before_or_after == "1":
+15:36:48.404082 line        45     elif before_or_after == "-1":
+15:36:48.404719 line        62         response.append(data)
+15:36:48.404559 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.406576 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:36:48.409800 line        50     for order in orders:
+Modified var:.. orders = <peewee.ModelSelect object at 0x113692be0>
+15:36:48.412544 line        49     response = []
+15:36:48.412411 exception   50     for order in orders:
+New var:....... response = []
+15:36:48.416094 line        50     for order in orders:
+StopIteration
+New var:....... order = <Order: 158>
+15:36:48.423641 line        64     return jsonify(response)
+15:36:48.424663 line        52         imgs = Image.select().join(Order).where(
+15:36:48.425910 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x1136929b0>
+15:36:48.430382 return      64     return jsonify(response)
+15:36:48.431233 line        55         images = []
+15:36:48.443333 call        25 def show():
+15:36:48.444799 line        27     before_or_after = request.args.get('q')
+New var:....... images = []
+New var:....... before_or_after = '1'
+15:36:48.448995 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.455009 line        32     if not auth_header:
+15:36:48.455364 line        56         for img in imgs:
+15:36:48.456889 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.461815 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:36:48.467635 line        38     user = User.get_by_id(id)
+Return value:.. <Response 162 bytes [200 OK]>
+New var:....... img = <Image: 156>
+15:36:48.474197 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:36:48.477086 line        58             images.append(img_url)
+New var:....... user = <User: 26>
+15:36:48.480014 line        41     orders = "liren"
+New var:....... orders = 'liren'
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:36:48.484781 line        42     if before_or_after == "1":
+15:36:48.484930 line        56         for img in imgs:
+15:36:48.487772 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.488555 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+15:36:48.489026 exception   56         for img in imgs:
+Modified var:.. orders = <peewee.ModelSelect object at 0x113697ba8>
+15:36:48.492293 line        49     response = []
+StopIteration
+New var:....... response = []
+15:36:48.507552 line        50     for order in orders:
+15:36:48.507297 call        25 def show():
+15:36:48.513487 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+15:36:48.516147 line        30     auth_header = request.headers.get('Authorization')
+15:36:48.515632 exception   50     for order in orders:
+15:36:48.499350 line        60         data = {'order_id': order.id, 'images': images,
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+StopIteration
+15:36:48.520074 line        32     if not auth_header:
+15:36:48.519637 line        61                 'start_time': order.start_time}
+15:36:48.523224 line        35     auth_token = auth_header.split(" ")[1]
+15:36:48.525705 call        25 def show():
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:36:48.523042 line        64     return jsonify(response)
+15:36:48.528264 line        36     id = User.decode_auth_token(auth_token)
+15:36:48.528151 line        27     before_or_after = request.args.get('q')
+15:36:48.529265 return      64     return jsonify(response)
+New var:....... id = 26
+New var:....... before_or_after = '-1'
+Return value:.. <Response 3 bytes [200 OK]>
+15:36:48.533552 line        38     user = User.get_by_id(id)
+15:36:48.533864 line        62         response.append(data)
+15:36:48.535771 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... user = <User: 26>
+15:36:48.541451 line        32     if not auth_header:
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:36:48.544919 line        35     auth_token = auth_header.split(" ")[1]
+15:36:48.545062 line        41     orders = "liren"
+New var:....... orders = 'liren'
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:36:48.548574 line        42     if before_or_after == "1":
+15:36:48.548717 line        36     id = User.decode_auth_token(auth_token)
+15:36:48.549232 line        45     elif before_or_after == "-1":
+New var:....... id = 26
+15:36:48.553551 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.553938 line        50     for order in orders:
+15:36:48.556670 line        38     user = User.get_by_id(id)
+15:36:48.556566 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x110bc21d0>
+15:36:48.557241 exception   50     for order in orders:
+15:36:48.563646 line        49     response = []
+New var:....... response = []
+15:36:48.564585 line        50     for order in orders:
+New var:....... user = <User: 26>
+15:36:48.567754 line        41     orders = "liren"
+New var:....... orders = 'liren'
+StopIteration
+New var:....... order = <Order: 158>
+15:36:48.574121 line        42     if before_or_after == "1":
+15:36:48.574299 line        52         imgs = Image.select().join(Order).where(
+15:36:48.575032 line        64     return jsonify(response)
+15:36:48.578703 line        45     elif before_or_after == "-1":
+15:36:48.578432 line        53             Image.status == 1, Order.id == order.id)
+15:36:48.579310 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:36:48.583520 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+New var:....... imgs = <peewee.ModelSelect object at 0x1137027b8>
+15:36:48.582752 return      64     return jsonify(response)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113697ba8>
+15:36:48.586079 line        49     response = []
+15:36:48.586197 line        55         images = []
+New var:....... response = []
+New var:....... images = []
+15:36:48.587213 line        50     for order in orders:
+Return value:.. <Response 162 bytes [200 OK]>
+15:36:48.587626 line        56         for img in imgs:
+New var:....... order = <Order: 158>
+New var:....... img = <Image: 156>
+15:36:48.597404 line        52         imgs = Image.select().join(Order).where(
+15:36:48.598780 line        57             img_url = img.pict_url
+15:36:48.599339 line        53             Image.status == 1, Order.id == order.id)
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+New var:....... imgs = <peewee.ModelSelect object at 0x113682240>
+15:36:48.603498 line        58             images.append(img_url)
+15:36:48.606273 line        55         images = []
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+New var:....... images = []
+15:36:48.610118 line        56         for img in imgs:
+15:36:48.610264 line        56         for img in imgs:
+15:36:48.610946 exception   56         for img in imgs:
+StopIteration
+15:36:48.617998 line        60         data = {'order_id': order.id, 'images': images,
+15:36:48.619917 line        61                 'start_time': order.start_time}
+New var:....... img = <Image: 156>
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:36:48.623651 line        62         response.append(data)
+15:36:48.623791 line        57             img_url = img.pict_url
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:36:48.624728 line        50     for order in orders:
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:36:48.628576 exception   50     for order in orders:
+15:36:48.628725 line        58             images.append(img_url)
+StopIteration
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:36:48.632058 line        64     return jsonify(response)
+15:36:48.632165 line        56         for img in imgs:
+15:36:48.633763 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+15:36:48.636010 exception   56         for img in imgs:
+StopIteration
+15:36:48.640351 line        60         data = {'order_id': order.id, 'images': images,
+15:36:48.643877 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:36:48.647960 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:36:48.652082 line        50     for order in orders:
+15:36:48.655408 exception   50     for order in orders:
+StopIteration
+15:36:48.659248 line        64     return jsonify(response)
+15:36:48.660744 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+15:37:31.205384 call        25 def show():
+15:37:31.208809 call        25 def show():
+15:37:31.210505 line        27     before_or_after = request.args.get('q')
+15:37:31.210679 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+New var:....... before_or_after = '1'
+15:37:31.214692 line        30     auth_header = request.headers.get('Authorization')
+15:37:31.215089 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:31.218869 line        32     if not auth_header:
+15:37:31.222152 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:31.223184 line        32     if not auth_header:
+15:37:31.226204 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:37:31.228086 line        35     auth_token = auth_header.split(" ")[1]
+15:37:31.228547 line        38     user = User.get_by_id(id)
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:31.236747 line        36     id = User.decode_auth_token(auth_token)
+New var:....... user = <User: 26>
+New var:....... id = 26
+15:37:31.243209 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:37:31.245009 line        38     user = User.get_by_id(id)
+15:37:31.246818 line        42     if before_or_after == "1":
+15:37:31.247781 line        43         orders = Order.select().where(Order.user_id == user.id,
+New var:....... user = <User: 26>
+15:37:31.255494 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:37:31.256970 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+15:37:31.257432 line        42     if before_or_after == "1":
+15:37:31.258315 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:37:31.258942 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113685cc0>
+15:37:31.260243 line        49     response = []
+Modified var:.. orders = <peewee.ModelSelect object at 0x1136922e8>
+New var:....... response = []
+15:37:31.262407 line        49     response = []
+15:37:31.265252 line        50     for order in orders:
+New var:....... response = []
+15:37:31.269256 line        50     for order in orders:
+15:37:31.270361 exception   50     for order in orders:
+StopIteration
+15:37:31.278986 exception   50     for order in orders:
+StopIteration
+15:37:31.279969 line        64     return jsonify(response)
+15:37:31.281632 line        64     return jsonify(response)
+15:37:31.283579 return      64     return jsonify(response)
+15:37:31.282704 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+Return value:.. <Response 3 bytes [200 OK]>
+15:37:54.471236 call        25 def show():
+15:37:54.472877 call        25 def show():
+15:37:54.474288 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+15:37:54.474464 line        27     before_or_after = request.args.get('q')
+15:37:54.476156 line        30     auth_header = request.headers.get('Authorization')
+New var:....... before_or_after = '1'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:54.477157 line        30     auth_header = request.headers.get('Authorization')
+15:37:54.477256 line        32     if not auth_header:
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:54.477963 line        35     auth_token = auth_header.split(" ")[1]
+15:37:54.478156 line        32     if not auth_header:
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:54.479004 line        36     id = User.decode_auth_token(auth_token)
+15:37:54.478786 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... id = 26
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:37:54.483516 line        38     user = User.get_by_id(id)
+15:37:54.483640 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+New var:....... user = <User: 26>
+15:37:54.488743 line        38     user = User.get_by_id(id)
+15:37:54.489049 line        41     orders = "liren"
+New var:....... orders = 'liren'
+New var:....... user = <User: 26>
+15:37:54.494312 line        42     if before_or_after == "1":
+15:37:54.497063 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:37:54.497939 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:37:54.498356 line        42     if before_or_after == "1":
+15:37:54.499783 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+15:37:54.500570 line        43         orders = Order.select().where(Order.user_id == user.id,
+Modified var:.. orders = <peewee.ModelSelect object at 0x11371c2b0>
+15:37:54.501578 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+15:37:54.502235 line        49     response = []
+Modified var:.. orders = <peewee.ModelSelect object at 0x11371c400>
+15:37:54.503751 line        49     response = []
+New var:....... response = []
+New var:....... response = []
+15:37:54.504560 line        50     for order in orders:
+15:37:54.504768 line        50     for order in orders:
+15:37:54.511938 exception   50     for order in orders:
+StopIteration
+15:37:54.512958 exception   50     for order in orders:
+15:37:54.513343 line        64     return jsonify(response)
+StopIteration
+15:37:54.514325 return      64     return jsonify(response)
+15:37:54.514734 line        64     return jsonify(response)
+15:37:54.518190 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+Return value:.. <Response 3 bytes [200 OK]>
+15:38:08.734067 call        25 def show():
+15:38:08.735705 call        25 def show():
+15:38:08.737280 line        27     before_or_after = request.args.get('q')
+15:38:08.737454 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+15:38:08.741022 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... before_or_after = '1'
+15:38:08.744924 line        32     if not auth_header:
+15:38:08.745086 line        30     auth_header = request.headers.get('Authorization')
+15:38:08.746909 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:08.750149 line        36     id = User.decode_auth_token(auth_token)
+15:38:08.750890 line        32     if not auth_header:
+New var:....... id = 26
+15:38:08.752262 line        38     user = User.get_by_id(id)
+15:38:08.752489 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+New var:....... user = <User: 26>
+15:38:08.758409 line        41     orders = "liren"
+15:38:08.758563 line        36     id = User.decode_auth_token(auth_token)
+New var:....... orders = 'liren'
+New var:....... id = 26
+15:38:08.763278 line        42     if before_or_after == "1":
+15:38:08.763581 line        38     user = User.get_by_id(id)
+15:38:08.767931 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:38:08.768566 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+New var:....... user = <User: 26>
+15:38:08.770355 line        41     orders = "liren"
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682208>
+New var:....... orders = 'liren'
+15:38:08.771219 line        49     response = []
+New var:....... response = []
+15:38:08.774323 line        42     if before_or_after == "1":
+15:38:08.774931 line        43         orders = Order.select().where(Order.user_id == user.id,
+15:38:08.775041 line        50     for order in orders:
+15:38:08.775707 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682160>
+15:38:08.782139 line        49     response = []
+15:38:08.783327 exception   50     for order in orders:
+StopIteration
+New var:....... response = []
+15:38:08.784866 line        50     for order in orders:
+15:38:08.785148 line        64     return jsonify(response)
+15:38:08.792477 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+15:38:08.794329 exception   50     for order in orders:
+StopIteration
+15:38:08.797804 line        64     return jsonify(response)
+15:38:08.799178 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+15:38:17.679981 call        25 def show():
+15:38:17.680460 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+15:38:17.686961 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:17.690813 line        32     if not auth_header:
+15:38:17.694389 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:17.695862 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:38:17.700173 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 26>
+15:38:17.708174 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:38:17.711178 line        42     if before_or_after == "1":
+15:38:17.714064 line        45     elif before_or_after == "-1":
+15:38:17.714764 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:38:17.720505 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113685048>
+15:38:17.722078 line        49     response = []
+New var:....... response = []
+15:38:17.732285 line        50     for order in orders:
+New var:....... order = <Order: 158>
+15:38:17.744774 line        52         imgs = Image.select().join(Order).where(
+15:38:17.747338 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113682358>
+15:38:17.751230 line        55         images = []
+New var:....... images = []
+15:38:17.755253 line        56         for img in imgs:
+New var:....... img = <Image: 156>
+15:38:17.761747 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:38:17.764255 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:38:17.771956 line        56         for img in imgs:
+15:38:17.775204 exception   56         for img in imgs:
+StopIteration
+15:38:17.779425 line        60         data = {'order_id': order.id, 'images': images,
+15:38:17.782515 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:38:17.785994 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:38:17.790000 line        50     for order in orders:
+15:38:17.794709 exception   50     for order in orders:
+StopIteration
+15:38:17.798883 line        64     return jsonify(response)
+15:38:17.800841 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+15:38:30.549531 call        25 def show():
+15:38:30.550432 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+15:38:30.554072 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:30.555399 line        32     if not auth_header:
+15:38:30.558467 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:30.563185 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 26
+15:38:30.566315 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 26>
+15:38:30.576279 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:38:30.579115 line        42     if before_or_after == "1":
+15:38:30.583089 line        45     elif before_or_after == "-1":
+15:38:30.586622 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:38:30.587668 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x1136928d0>
+15:38:30.594566 line        49     response = []
+New var:....... response = []
+15:38:30.598402 line        50     for order in orders:
+New var:....... order = <Order: 158>
+15:38:30.611686 line        52         imgs = Image.select().join(Order).where(
+15:38:30.612771 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113692208>
+15:38:30.617190 line        55         images = []
+New var:....... images = []
+15:38:30.621248 line        56         for img in imgs:
+New var:....... img = <Image: 156>
+15:38:30.628175 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:38:30.630410 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:38:30.631016 line        56         for img in imgs:
+15:38:30.631408 exception   56         for img in imgs:
+StopIteration
+15:38:30.632012 line        60         data = {'order_id': order.id, 'images': images,
+15:38:30.632354 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:38:30.632899 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:38:30.633439 line        50     for order in orders:
+15:38:30.633864 exception   50     for order in orders:
+StopIteration
+15:38:30.635769 line        64     return jsonify(response)
+15:38:30.637736 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+15:38:52.171966 call        25 def show():
+15:38:52.174885 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+15:38:52.178612 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:52.179652 line        32     if not auth_header:
+15:38:52.180123 line        35     auth_token = auth_header.split(" ")[1]
+15:38:52.182785 call        25 def show():
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:52.185008 line        36     id = User.decode_auth_token(auth_token)
+15:38:52.185187 line        27     before_or_after = request.args.get('q')
+New var:....... id = 26
+New var:....... before_or_after = '-1'
+15:38:52.189941 line        30     auth_header = request.headers.get('Authorization')
+15:38:52.190136 line        38     user = User.get_by_id(id)
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:52.195957 line        32     if not auth_header:
+15:38:52.196830 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... user = <User: 26>
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yNn0.nuDoJg_-4UK8_J1HtdnynTzTfaRTOd_ci9q8_oBOoDU'
+15:38:52.200566 line        41     orders = "liren"
+New var:....... orders = 'liren'
+15:38:52.200952 line        36     id = User.decode_auth_token(auth_token)
+15:38:52.201688 line        42     if before_or_after == "1":
+New var:....... id = 26
+15:38:52.206516 line        45     elif before_or_after == "-1":
+15:38:52.206629 line        38     user = User.get_by_id(id)
+15:38:52.207130 line        46         orders = Order.select().where(Order.user_id == user.id,
+15:38:52.211815 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113692438>
+New var:....... user = <User: 26>
+15:38:52.213957 line        49     response = []
+15:38:52.216896 line        41     orders = "liren"
+New var:....... response = []
+New var:....... orders = 'liren'
+15:38:52.217992 line        42     if before_or_after == "1":
+15:38:52.218097 line        50     for order in orders:
+15:38:52.221313 line        45     elif before_or_after == "-1":
+15:38:52.225116 line        46         orders = Order.select().where(Order.user_id == user.id,
+New var:....... order = <Order: 158>
+15:38:52.227158 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+15:38:52.227459 line        52         imgs = Image.select().join(Order).where(
+Modified var:.. orders = <peewee.ModelSelect object at 0x1133143c8>
+15:38:52.231516 line        53             Image.status == 1, Order.id == order.id)
+15:38:52.231924 line        49     response = []
+New var:....... imgs = <peewee.ModelSelect object at 0x1136922e8>
+15:38:52.235109 line        55         images = []
+New var:....... response = []
+15:38:52.238320 line        50     for order in orders:
+New var:....... images = []
+15:38:52.242268 line        56         for img in imgs:
+New var:....... order = <Order: 158>
+15:38:52.244321 line        52         imgs = Image.select().join(Order).where(
+15:38:52.245361 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113685a90>
+15:38:52.248529 line        55         images = []
+New var:....... images = []
+New var:....... img = <Image: 156>
+15:38:52.255374 line        57             img_url = img.pict_url
+15:38:52.253868 line        56         for img in imgs:
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:38:52.262638 line        58             images.append(img_url)
+New var:....... img = <Image: 156>
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:38:52.264896 line        57             img_url = img.pict_url
+15:38:52.265270 line        56         for img in imgs:
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+15:38:52.268975 exception   56         for img in imgs:
+15:38:52.269091 line        58             images.append(img_url)
+StopIteration
+15:38:52.272381 line        60         data = {'order_id': order.id, 'images': images,
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+15:38:52.273255 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:38:52.276343 line        56         for img in imgs:
+15:38:52.276782 line        62         response.append(data)
+15:38:52.280000 exception   56         for img in imgs:
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+StopIteration
+15:38:52.283847 line        50     for order in orders:
+15:38:52.284719 exception   50     for order in orders:
+15:38:52.284130 line        60         data = {'order_id': order.id, 'images': images,
+StopIteration
+15:38:52.287990 line        61                 'start_time': order.start_time}
+15:38:52.288536 line        64     return jsonify(response)
+New var:....... data = {'order_id': 158, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 7, 30)}
+15:38:52.291949 line        62         response.append(data)
+15:38:52.294740 return      64     return jsonify(response)
+Modified var:.. response = [{'order_id': 158, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 7, 30)}]
+15:38:52.296160 line        50     for order in orders:
+15:38:52.300002 exception   50     for order in orders:
+Return value:.. <Response 162 bytes [200 OK]>
+StopIteration
+15:38:52.303424 line        64     return jsonify(response)
+15:38:52.308077 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+16:33:11.464658 call        25 def show():
+16:33:11.467517 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+16:33:11.471219 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMH0.zb1uguzdqm0-cHLTGLCmXNBwQsPsKWPb_J25EYQl2gU'
+16:33:11.472293 line        32     if not auth_header:
+16:33:11.475877 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMH0.zb1uguzdqm0-cHLTGLCmXNBwQsPsKWPb_J25EYQl2gU'
+16:33:11.479434 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 20
+16:33:11.483171 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 20>
+16:33:11.489667 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:33:11.495230 line        42     if before_or_after == "1":
+16:33:11.495835 line        45     elif before_or_after == "-1":
+16:33:11.496372 line        46         orders = Order.select().where(Order.user_id == user.id,
+16:33:11.499899 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113692ef0>
+16:33:11.503338 line        49     response = []
+New var:....... response = []
+16:33:11.504103 line        50     for order in orders:
+16:33:11.510830 exception   50     for order in orders:
+StopIteration
+16:33:11.513381 line        64     return jsonify(response)
+16:33:11.514504 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:33:43.398893 call        25 def show():
+16:33:43.401799 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+16:33:43.403626 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:33:43.404509 line        32     if not auth_header:
+16:33:43.404831 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:33:43.405540 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:33:43.407057 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:33:43.415476 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:33:43.417855 line        42     if before_or_after == "1":
+16:33:43.418418 line        45     elif before_or_after == "-1":
+16:33:43.418971 line        46         orders = Order.select().where(Order.user_id == user.id,
+16:33:43.422429 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x110bc21d0>
+16:33:43.426093 line        49     response = []
+New var:....... response = []
+16:33:43.427090 line        50     for order in orders:
+16:33:43.431290 exception   50     for order in orders:
+StopIteration
+16:33:43.433634 line        64     return jsonify(response)
+16:33:43.434636 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+16:34:03.417640 call        40     def moderate(self):
+16:34:03.462678 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x112df5f...larifai.rest.client.Model object at 0x113697c50>]
+16:34:05.794181 line        42         errors = []
+New var:....... errors = []
+16:34:05.796406 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x112df5f98>
+16:34:05.796961 line        44             res = {}
+New var:....... res = {}
+16:34:05.797473 line        45             response = model.predict_by_url(
+16:34:05.797708 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+16:34:06.622185 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+16:34:06.626003 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:34:06.633694 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:06.637239 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:34:06.641167 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:06.641940 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:34:06.645851 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:06.646457 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:34:06.650245 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:06.650737 line        48             for i, v in enumerate(results):
+16:34:06.651224 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x113697c50>
+16:34:06.651824 line        44             res = {}
+16:34:06.652148 line        45             response = model.predict_by_url(
+16:34:06.652434 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+16:34:07.213545 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+16:34:07.216032 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+16:34:07.223521 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:07.224607 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+16:34:07.229018 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:07.229713 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+16:34:07.233753 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:07.234362 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+16:34:07.238535 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:07.239153 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+16:34:07.243149 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:34:07.244019 line        48             for i, v in enumerate(results):
+16:34:07.244637 line        43         for model in models:
+16:34:07.248020 line        53         return errors
+16:34:07.248685 return      53         return errors
+Return value:.. []
+16:34:09.559246 call        25 def show():
+16:34:09.559777 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+16:34:09.562354 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:34:09.563948 line        32     if not auth_header:
+16:34:09.565193 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:34:09.569363 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:34:09.573112 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:34:09.579876 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:34:09.582794 line        42     if before_or_after == "1":
+16:34:09.585718 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:34:09.586472 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711358>
+16:34:09.590265 line        49     response = []
+New var:....... response = []
+16:34:09.593615 line        50     for order in orders:
+16:34:09.598800 exception   50     for order in orders:
+StopIteration
+16:34:09.601457 line        64     return jsonify(response)
+16:34:09.602404 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:34:13.142693 call        25 def show():
+16:34:13.145836 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+16:34:13.146798 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:34:13.148636 line        32     if not auth_header:
+16:34:13.151434 call        25 def show():
+16:34:13.151579 line        35     auth_token = auth_header.split(" ")[1]
+16:34:13.151940 line        27     before_or_after = request.args.get('q')
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... before_or_after = '1'
+16:34:13.155632 line        36     id = User.decode_auth_token(auth_token)
+16:34:13.155779 line        30     auth_header = request.headers.get('Authorization')
+New var:....... id = 22
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:34:13.159783 line        38     user = User.get_by_id(id)
+16:34:13.159922 line        32     if not auth_header:
+16:34:13.160442 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... user = <User: 22>
+16:34:13.163528 line        41     orders = "liren"
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:34:13.164137 line        36     id = User.decode_auth_token(auth_token)
+New var:....... orders = 'liren'
+16:34:13.168505 line        42     if before_or_after == "1":
+New var:....... id = 22
+16:34:13.169055 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:34:13.172388 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+16:34:13.172522 line        38     user = User.get_by_id(id)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113738828>
+16:34:13.175904 line        49     response = []
+New var:....... response = []
+16:34:13.178446 line        50     for order in orders:
+16:34:13.183260 exception   50     for order in orders:
+StopIteration
+16:34:13.184397 line        64     return jsonify(response)
+New var:....... user = <User: 22>
+16:34:13.185284 line        41     orders = "liren"
+16:34:13.185941 return      64     return jsonify(response)
+New var:....... orders = 'liren'
+Return value:.. <Response 3 bytes [200 OK]>
+16:34:13.189252 line        42     if before_or_after == "1":
+16:34:13.193263 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:34:13.193940 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711ba8>
+16:34:13.197983 line        49     response = []
+New var:....... response = []
+16:34:13.201262 line        50     for order in orders:
+16:34:13.209367 exception   50     for order in orders:
+StopIteration
+16:34:13.211886 line        64     return jsonify(response)
+16:34:13.212960 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:35:24.759458 call        25 def show():
+16:35:24.761594 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+16:35:24.762272 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:24.762767 line        32     if not auth_header:
+16:35:24.763033 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:24.763430 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:35:24.764197 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:35:24.771783 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:35:24.774082 line        42     if before_or_after == "1":
+16:35:24.774486 line        45     elif before_or_after == "-1":
+16:35:24.774845 line        46         orders = Order.select().where(Order.user_id == user.id,
+16:35:24.775391 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x11369f358>
+16:35:24.776122 line        49     response = []
+New var:....... response = []
+16:35:24.776842 line        50     for order in orders:
+16:35:24.781133 exception   50     for order in orders:
+StopIteration
+16:35:24.783704 line        64     return jsonify(response)
+16:35:24.784449 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+16:35:40.660203 call        40     def moderate(self):
+16:35:40.660748 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x11367de...larifai.rest.client.Model object at 0x112e6aeb8>]
+16:35:41.091686 line        42         errors = []
+New var:....... errors = []
+16:35:41.094018 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x11367de48>
+16:35:41.094552 line        44             res = {}
+New var:....... res = {}
+16:35:41.095052 line        45             response = model.predict_by_url(
+16:35:41.095343 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+16:35:41.719229 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+16:35:41.719930 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:35:41.720795 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:41.721145 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:35:41.721884 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:41.722213 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:35:41.722848 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:41.723135 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+16:35:41.723672 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:41.723968 line        48             for i, v in enumerate(results):
+16:35:41.724306 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x112e6aeb8>
+16:35:41.724756 line        44             res = {}
+16:35:41.725049 line        45             response = model.predict_by_url(
+16:35:41.725327 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+16:35:42.169753 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+16:35:42.174896 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+16:35:42.175782 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:42.176153 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+16:35:42.176828 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:42.177159 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+16:35:42.177823 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:42.178152 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+16:35:42.178755 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:42.179048 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+16:35:42.179587 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+16:35:42.180026 line        48             for i, v in enumerate(results):
+16:35:42.180490 line        43         for model in models:
+16:35:42.183976 line        53         return errors
+16:35:42.184667 return      53         return errors
+Return value:.. []
+16:35:46.421250 call        25 def show():
+16:35:46.421910 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+16:35:46.427229 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:46.430604 line        32     if not auth_header:
+16:35:46.432859 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:46.436618 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:35:46.438128 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:35:46.444704 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:35:46.449581 line        42     if before_or_after == "1":
+16:35:46.449883 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:35:46.450465 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682780>
+16:35:46.453923 line        49     response = []
+New var:....... response = []
+16:35:46.454710 line        50     for order in orders:
+16:35:46.458966 exception   50     for order in orders:
+StopIteration
+16:35:46.461366 line        64     return jsonify(response)
+16:35:46.462186 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:35:58.745446 call        25 def show():
+16:35:58.747034 call        25 def show():
+16:35:58.747378 line        27     before_or_after = request.args.get('q')
+16:35:58.749937 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+New var:....... before_or_after = '1'
+16:35:58.751175 line        30     auth_header = request.headers.get('Authorization')
+16:35:58.754362 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:58.755225 line        32     if not auth_header:
+16:35:58.755436 line        32     if not auth_header:
+16:35:58.755658 line        35     auth_token = auth_header.split(" ")[1]
+16:35:58.755850 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:35:58.756381 line        36     id = User.decode_auth_token(auth_token)
+16:35:58.756527 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:35:58.758566 line        38     user = User.get_by_id(id)
+New var:....... id = 22
+16:35:58.762950 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:35:58.767590 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:35:58.768406 line        42     if before_or_after == "1":
+16:35:58.768885 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:35:58.769491 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+New var:....... user = <User: 22>
+16:35:58.770491 line        41     orders = "liren"
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711e10>
+16:35:58.772998 line        49     response = []
+New var:....... orders = 'liren'
+New var:....... response = []
+16:35:58.773692 line        42     if before_or_after == "1":
+16:35:58.773875 line        50     for order in orders:
+16:35:58.774100 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:35:58.777107 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+16:35:58.778405 exception   50     for order in orders:
+StopIteration
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711518>
+16:35:58.780021 line        64     return jsonify(response)
+16:35:58.783454 line        49     response = []
+New var:....... response = []
+16:35:58.787059 line        50     for order in orders:
+16:35:58.787748 return      64     return jsonify(response)
+16:35:58.792495 exception   50     for order in orders:
+StopIteration
+Return value:.. <Response 3 bytes [200 OK]>
+16:35:58.795742 line        64     return jsonify(response)
+16:35:58.797311 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:36:04.740343 call        25 def show():
+16:36:04.742745 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+16:36:04.743797 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:04.747479 line        32     if not auth_header:
+16:36:04.747873 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:04.748496 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:36:04.749941 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:36:04.756497 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:36:04.759289 line        42     if before_or_after == "1":
+16:36:04.760791 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:36:04.761654 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113756a58>
+16:36:04.762884 line        49     response = []
+New var:....... response = []
+16:36:04.766542 line        50     for order in orders:
+16:36:04.771689 exception   50     for order in orders:
+StopIteration
+16:36:04.774153 line        64     return jsonify(response)
+16:36:04.775170 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:36:04.813136 call        25 def show():
+16:36:04.813700 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+16:36:04.817242 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:04.820911 line        32     if not auth_header:
+16:36:04.821968 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:04.822883 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:36:04.824160 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:36:04.831304 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:36:04.832567 line        42     if before_or_after == "1":
+16:36:04.833055 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:36:04.833676 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113756a20>
+16:36:04.835581 line        49     response = []
+New var:....... response = []
+16:36:04.836466 line        50     for order in orders:
+16:36:04.841699 exception   50     for order in orders:
+StopIteration
+16:36:04.844395 line        64     return jsonify(response)
+16:36:04.845439 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:36:41.822771 call        25 def show():
+16:36:41.824581 call        25 def show():
+16:36:41.828000 line        27     before_or_after = request.args.get('q')
+16:36:41.828244 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+New var:....... before_or_after = '1'
+16:36:41.829867 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:41.831057 line        30     auth_header = request.headers.get('Authorization')
+16:36:41.831322 line        32     if not auth_header:
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:41.831715 line        35     auth_token = auth_header.split(" ")[1]
+16:36:41.831980 line        32     if not auth_header:
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:41.832418 line        35     auth_token = auth_header.split(" ")[1]
+16:36:41.832581 line        36     id = User.decode_auth_token(auth_token)
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... id = 22
+16:36:41.833494 line        36     id = User.decode_auth_token(auth_token)
+16:36:41.833663 line        38     user = User.get_by_id(id)
+New var:....... id = 22
+16:36:41.836853 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:36:41.841771 line        41     orders = "liren"
+New var:....... user = <User: 22>
+New var:....... orders = 'liren'
+16:36:41.845725 line        41     orders = "liren"
+16:36:41.845860 line        42     if before_or_after == "1":
+New var:....... orders = 'liren'
+16:36:41.849485 line        42     if before_or_after == "1":
+16:36:41.849759 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:36:41.850380 line        43         orders = Order.select().where(Order.user_id == user.id,
+16:36:41.853811 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+16:36:41.854205 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x1112718d0>
+16:36:41.857133 line        49     response = []
+Modified var:.. orders = <peewee.ModelSelect object at 0x112e89da0>
+New var:....... response = []
+16:36:41.861045 line        50     for order in orders:
+16:36:41.861173 line        49     response = []
+New var:....... response = []
+16:36:41.864350 exception   50     for order in orders:
+16:36:41.865459 line        50     for order in orders:
+StopIteration
+16:36:41.868158 line        64     return jsonify(response)
+16:36:41.868814 exception   50     for order in orders:
+16:36:41.870887 return      64     return jsonify(response)
+StopIteration
+Return value:.. <Response 3 bytes [200 OK]>
+16:36:41.874476 line        64     return jsonify(response)
+16:36:41.877805 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+16:36:52.888895 call        25 def show():
+16:36:52.890020 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+16:36:52.895549 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:52.899614 line        32     if not auth_header:
+16:36:52.900176 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+16:36:52.904122 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+16:36:52.911179 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+16:36:52.918255 line        41     orders = "liren"
+New var:....... orders = 'liren'
+16:36:52.920747 line        42     if before_or_after == "1":
+16:36:52.924204 line        45     elif before_or_after == "-1":
+16:36:52.925527 line        46         orders = Order.select().where(Order.user_id == user.id,
+16:36:52.926529 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x110ac7ef0>
+16:36:52.929830 line        49     response = []
+New var:....... response = []
+16:36:52.930828 line        50     for order in orders:
+New var:....... order = <Order: 160>
+16:36:52.935988 line        52         imgs = Image.select().join(Order).where(
+16:36:52.938585 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11369f550>
+16:36:52.942111 line        55         images = []
+New var:....... images = []
+16:36:52.945755 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+16:36:52.950601 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+16:36:52.953210 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+16:36:52.956865 line        56         for img in imgs:
+16:36:52.957347 exception   56         for img in imgs:
+StopIteration
+16:36:52.961168 line        60         data = {'order_id': order.id, 'images': images,
+16:36:52.961711 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+16:36:52.965594 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+16:36:52.969404 line        50     for order in orders:
+16:36:52.970920 exception   50     for order in orders:
+StopIteration
+16:36:52.975219 line        64     return jsonify(response)
+16:36:52.977081 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+17:15:09.021396 call        40     def moderate(self):
+17:15:09.022047 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x1136f61...larifai.rest.client.Model object at 0x111209b70>]
+17:15:10.977728 line        42         errors = []
+New var:....... errors = []
+17:15:10.980306 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x1136f6160>
+17:15:10.984056 line        44             res = {}
+New var:....... res = {}
+17:15:10.984643 line        45             response = model.predict_by_url(
+17:15:10.985017 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:15:11.600324 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'weapons', 'name': 'weapons', 'value': 0...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:15:11.602993 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'weapons', 'name': 'weapons', 'value': 0....06, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:11.606799 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:11.607159 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...18, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:11.607753 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:11.608057 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....72, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:11.608647 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:11.609049 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 3....06, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:11.609657 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:11.609951 line        48             for i, v in enumerate(results):
+17:15:11.610239 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x111209b70>
+17:15:11.611033 line        44             res = {}
+17:15:11.614406 line        45             response = model.predict_by_url(
+17:15:11.614875 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...e': 7.122277212445738e-10, 'app_id': 'main'}]}}]}
+17:15:12.069958 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...value': 7.122277212445738e-10, 'app_id': 'main'}]
+17:15:12.073657 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 1.0, 'app_id': 'main'}
+17:15:12.076558 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:12.077094 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 3.2096700408601464e-08, 'app_id': 'main'}
+17:15:12.077852 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:12.078201 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 9.237385079075011e-09, 'app_id': 'main'}
+17:15:12.078901 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:12.079215 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 1.4473439113871223e-09, 'app_id': 'main'}
+17:15:12.079787 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:12.080225 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 7.122277212445738e-10, 'app_id': 'main'}
+17:15:12.080904 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:12.081319 line        48             for i, v in enumerate(results):
+17:15:12.081840 line        43         for model in models:
+17:15:12.082393 line        53         return errors
+17:15:12.082783 return      53         return errors
+Return value:.. []
+Starting var:.. self = <Image: None>
+17:15:12.092091 call        40     def moderate(self):
+17:15:12.094426 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x112e89e...larifai.rest.client.Model object at 0x11369f358>]
+17:15:12.509151 line        42         errors = []
+New var:....... errors = []
+17:15:12.511360 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x112e89e48>
+17:15:12.511977 line        44             res = {}
+New var:....... res = {}
+17:15:12.512433 line        45             response = model.predict_by_url(
+17:15:12.512713 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:15:13.083670 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:15:13.086296 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:13.094194 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.097297 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:13.098288 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.099100 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:13.106220 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.106962 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:15:13.113891 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.114669 line        48             for i, v in enumerate(results):
+17:15:13.115576 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x11369f358>
+17:15:13.118873 line        44             res = {}
+17:15:13.122484 line        45             response = model.predict_by_url(
+17:15:13.123127 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+17:15:13.584264 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+17:15:13.587022 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+17:15:13.590636 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.591000 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+17:15:13.591692 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.592011 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+17:15:13.592597 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.592906 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+17:15:13.593475 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.593777 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+17:15:13.594337 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:15:13.594909 line        48             for i, v in enumerate(results):
+17:15:13.595416 line        43         for model in models:
+17:15:13.598693 line        53         return errors
+17:15:13.599155 return      53         return errors
+Return value:.. []
+17:15:25.319299 call        25 def show():
+17:15:25.322035 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:15:25.325659 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:15:25.326204 line        32     if not auth_header:
+17:15:25.326425 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:15:25.326782 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:15:25.327636 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:15:25.339139 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:15:25.344260 line        42     if before_or_after == "1":
+17:15:25.347864 line        45     elif before_or_after == "-1":
+17:15:25.348427 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:15:25.351662 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711400>
+17:15:25.352406 line        49     response = []
+New var:....... response = []
+17:15:25.353095 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:15:25.359253 line        52         imgs = Image.select().join(Order).where(
+17:15:25.361822 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113682240>
+17:15:25.364982 line        55         images = []
+New var:....... images = []
+17:15:25.370461 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:15:25.378524 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:15:25.381324 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:15:25.384906 line        56         for img in imgs:
+17:15:25.388467 exception   56         for img in imgs:
+StopIteration
+17:15:25.393038 line        60         data = {'order_id': order.id, 'images': images,
+17:15:25.395723 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:15:25.399267 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:15:25.399859 line        50     for order in orders:
+17:15:25.400168 exception   50     for order in orders:
+StopIteration
+17:15:25.400831 line        64     return jsonify(response)
+17:15:25.402072 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+17:17:33.938544 call        25 def show():
+17:17:33.947253 call        25 def show():
+17:17:33.948878 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:17:33.950441 line        27     before_or_after = request.args.get('q')
+17:17:33.950783 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... before_or_after = '-1'
+17:17:33.952179 line        32     if not auth_header:
+17:17:33.953085 line        30     auth_header = request.headers.get('Authorization')
+17:17:33.953500 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:33.956960 line        32     if not auth_header:
+17:17:33.957141 line        36     id = User.decode_auth_token(auth_token)
+17:17:33.957617 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... id = 22
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:33.962089 line        36     id = User.decode_auth_token(auth_token)
+17:17:33.962214 line        38     user = User.get_by_id(id)
+New var:....... id = 22
+17:17:33.967539 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:17:33.973353 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:17:33.980678 line        42     if before_or_after == "1":
+17:17:33.982691 line        45     elif before_or_after == "-1":
+17:17:33.983144 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:17:33.984018 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x110bcfb00>
+New var:....... user = <User: 22>
+17:17:33.987701 line        41     orders = "liren"
+17:17:33.987825 line        49     response = []
+New var:....... orders = 'liren'
+New var:....... response = []
+17:17:33.991562 line        50     for order in orders:
+17:17:33.991679 line        42     if before_or_after == "1":
+17:17:33.995389 line        45     elif before_or_after == "-1":
+New var:....... order = <Order: 160>
+17:17:33.997245 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:17:33.997350 line        52         imgs = Image.select().join(Order).where(
+17:17:33.998050 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+17:17:34.002777 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x1137561d0>
+Modified var:.. orders = <peewee.ModelSelect object at 0x111209fd0>
+17:17:34.005743 line        55         images = []
+17:17:34.005882 line        49     response = []
+New var:....... images = []
+New var:....... response = []
+17:17:34.007656 line        56         for img in imgs:
+17:17:34.008121 line        50     for order in orders:
+New var:....... img = <Image: 158>
+17:17:34.016693 line        57             img_url = img.pict_url
+New var:....... order = <Order: 160>
+17:17:34.018762 line        52         imgs = Image.select().join(Order).where(
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:17:34.020259 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113756d30>
+17:17:34.023555 line        58             images.append(img_url)
+17:17:34.023993 line        55         images = []
+New var:....... images = []
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:17:34.030423 line        56         for img in imgs:
+17:17:34.030585 line        56         for img in imgs:
+17:17:34.035344 exception   56         for img in imgs:
+New var:....... img = <Image: 158>
+17:17:34.039284 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+StopIteration
+17:17:34.042621 line        58             images.append(img_url)
+17:17:34.048352 line        60         data = {'order_id': order.id, 'images': images,
+17:17:34.048867 line        61                 'start_time': order.start_time}
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:17:34.051140 line        56         for img in imgs:
+17:17:34.055043 exception   56         for img in imgs:
+StopIteration
+17:17:34.054444 line        62         response.append(data)
+17:17:34.058432 line        60         data = {'order_id': order.id, 'images': images,
+17:17:34.059103 line        61                 'start_time': order.start_time}
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:17:34.062916 line        62         response.append(data)
+17:17:34.063202 line        50     for order in orders:
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:17:34.066474 line        50     for order in orders:
+17:17:34.070373 exception   50     for order in orders:
+17:17:34.071014 exception   50     for order in orders:
+StopIteration
+StopIteration
+17:17:34.072897 line        64     return jsonify(response)
+17:17:34.077029 return      64     return jsonify(response)
+17:17:34.077617 line        64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+17:17:34.080416 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+17:17:37.450303 call        25 def show():
+17:17:37.450914 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:17:37.453669 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:37.457476 line        32     if not auth_header:
+17:17:37.460604 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:37.461399 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:17:37.465392 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:17:37.469990 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:17:37.472385 line        42     if before_or_after == "1":
+17:17:37.475850 line        45     elif before_or_after == "-1":
+17:17:37.476356 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:17:37.479860 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x11374ec88>
+17:17:37.483828 line        49     response = []
+New var:....... response = []
+17:17:37.487672 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:17:37.495073 line        52         imgs = Image.select().join(Order).where(
+17:17:37.497434 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11374eb38>
+17:17:37.500699 line        55         images = []
+New var:....... images = []
+17:17:37.504527 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:17:37.509646 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:17:37.512339 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:17:37.516041 line        56         for img in imgs:
+17:17:37.516403 exception   56         for img in imgs:
+StopIteration
+17:17:37.516968 line        60         data = {'order_id': order.id, 'images': images,
+17:17:37.517255 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:17:37.517800 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:17:37.518294 line        50     for order in orders:
+17:17:37.518603 exception   50     for order in orders:
+StopIteration
+17:17:37.519097 line        64     return jsonify(response)
+17:17:37.520403 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+17:17:54.144493 call        40     def moderate(self):
+17:17:54.145007 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x110ae66...larifai.rest.client.Model object at 0x110bc22e8>]
+17:17:54.721702 line        42         errors = []
+New var:....... errors = []
+17:17:54.724117 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x110ae6630>
+17:17:54.725197 line        44             res = {}
+New var:....... res = {}
+17:17:54.726233 line        45             response = model.predict_by_url(
+17:17:54.727035 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:17:55.259505 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:17:55.261878 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:17:55.269243 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.270283 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:17:55.274167 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.274783 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:17:55.278826 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.279443 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:17:55.283538 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.284160 line        48             for i, v in enumerate(results):
+17:17:55.284699 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x110bc22e8>
+17:17:55.285991 line        44             res = {}
+17:17:55.287406 line        45             response = model.predict_by_url(
+17:17:55.288012 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+17:17:55.834210 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+17:17:55.839476 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+17:17:55.846798 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.847627 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+17:17:55.850790 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.851552 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+17:17:55.855615 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.856231 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+17:17:55.860210 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.860844 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+17:17:55.864763 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:17:55.865382 line        48             for i, v in enumerate(results):
+17:17:55.865926 line        43         for model in models:
+17:17:55.869422 line        53         return errors
+17:17:55.870309 return      53         return errors
+Return value:.. []
+17:17:58.139081 call        25 def show():
+17:17:58.139799 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:17:58.143025 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:58.147848 line        32     if not auth_header:
+17:17:58.150376 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:17:58.155885 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:17:58.158856 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:17:58.168678 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:17:58.171382 line        42     if before_or_after == "1":
+17:17:58.174747 line        45     elif before_or_after == "-1":
+17:17:58.175282 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:17:58.178464 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113711668>
+17:17:58.182025 line        49     response = []
+New var:....... response = []
+17:17:58.182840 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:17:58.189044 line        52         imgs = Image.select().join(Order).where(
+17:17:58.191895 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x113711b70>
+17:17:58.198040 line        55         images = []
+New var:....... images = []
+17:17:58.199035 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:17:58.209711 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:17:58.212851 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:17:58.216745 line        56         for img in imgs:
+17:17:58.220138 exception   56         for img in imgs:
+StopIteration
+17:17:58.223917 line        60         data = {'order_id': order.id, 'images': images,
+17:17:58.224366 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:17:58.225354 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:17:58.226077 line        50     for order in orders:
+17:17:58.226482 exception   50     for order in orders:
+StopIteration
+17:17:58.227272 line        64     return jsonify(response)
+17:17:58.228625 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+17:18:00.773513 call        25 def show():
+17:18:00.774356 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '1'
+17:18:00.777301 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:00.780640 line        32     if not auth_header:
+17:18:00.783858 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:00.784465 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:18:00.785454 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:18:00.792625 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:18:00.794983 line        42     if before_or_after == "1":
+17:18:00.795271 line        43         orders = Order.select().where(Order.user_id == user.id,
+17:18:00.795630 line        44                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x1137116a0>
+17:18:00.796136 line        49     response = []
+New var:....... response = []
+17:18:00.796648 line        50     for order in orders:
+17:18:00.803427 exception   50     for order in orders:
+StopIteration
+17:18:00.805994 line        64     return jsonify(response)
+17:18:00.807028 return      64     return jsonify(response)
+Return value:.. <Response 3 bytes [200 OK]>
+17:18:02.364126 call        25 def show():
+17:18:02.365325 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:18:02.368243 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:02.371629 line        32     if not auth_header:
+17:18:02.372586 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:02.373888 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:18:02.375024 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:18:02.384473 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:18:02.386654 line        42     if before_or_after == "1":
+17:18:02.387025 line        45     elif before_or_after == "-1":
+17:18:02.387466 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:18:02.387981 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x11374e2e8>
+17:18:02.388644 line        49     response = []
+New var:....... response = []
+17:18:02.389445 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:18:02.392727 line        52         imgs = Image.select().join(Order).where(
+17:18:02.395452 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11374eb38>
+17:18:02.398658 line        55         images = []
+New var:....... images = []
+17:18:02.399531 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:18:02.403782 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:18:02.406194 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:18:02.416237 line        56         for img in imgs:
+17:18:02.420715 exception   56         for img in imgs:
+StopIteration
+17:18:02.422969 line        60         data = {'order_id': order.id, 'images': images,
+17:18:02.425298 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:18:02.435616 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:18:02.436451 line        50     for order in orders:
+17:18:02.436932 exception   50     for order in orders:
+StopIteration
+17:18:02.449592 line        64     return jsonify(response)
+17:18:02.451095 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+17:18:06.080780 call        25 def show():
+17:18:06.082428 call        25 def show():
+17:18:06.082849 line        27     before_or_after = request.args.get('q')
+17:18:06.085125 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+New var:....... before_or_after = '-1'
+17:18:06.089283 line        30     auth_header = request.headers.get('Authorization')
+17:18:06.089438 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:06.090747 line        32     if not auth_header:
+17:18:06.094008 line        35     auth_token = auth_header.split(" ")[1]
+17:18:06.094119 line        32     if not auth_header:
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:06.094650 line        35     auth_token = auth_header.split(" ")[1]
+17:18:06.094812 line        36     id = User.decode_auth_token(auth_token)
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... id = 22
+17:18:06.095815 line        36     id = User.decode_auth_token(auth_token)
+17:18:06.099003 line        38     user = User.get_by_id(id)
+New var:....... id = 22
+17:18:06.100085 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+New var:....... user = <User: 22>
+17:18:06.105617 line        41     orders = "liren"
+17:18:06.107490 line        41     orders = "liren"
+New var:....... orders = 'liren'
+New var:....... orders = 'liren'
+17:18:06.108195 line        42     if before_or_after == "1":
+17:18:06.108405 line        42     if before_or_after == "1":
+17:18:06.108680 line        45     elif before_or_after == "-1":
+17:18:06.108956 line        45     elif before_or_after == "-1":
+17:18:06.109207 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:18:06.109535 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:18:06.110031 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+17:18:06.110544 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113755cc0>
+Modified var:.. orders = <peewee.ModelSelect object at 0x1137555f8>
+17:18:06.111652 line        49     response = []
+17:18:06.111891 line        49     response = []
+New var:....... response = []
+New var:....... response = []
+17:18:06.112890 line        50     for order in orders:
+17:18:06.113162 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:18:06.120880 line        52         imgs = Image.select().join(Order).where(
+New var:....... order = <Order: 160>
+17:18:06.123612 line        53             Image.status == 1, Order.id == order.id)
+17:18:06.123764 line        52         imgs = Image.select().join(Order).where(
+New var:....... imgs = <peewee.ModelSelect object at 0x11375e588>
+17:18:06.127199 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11375e5f8>
+17:18:06.128203 line        55         images = []
+17:18:06.130687 line        55         images = []
+New var:....... images = []
+New var:....... images = []
+17:18:06.133928 line        56         for img in imgs:
+17:18:06.134070 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:18:06.143978 line        57             img_url = img.pict_url
+New var:....... img = <Image: 158>
+17:18:06.145802 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:18:06.147044 line        58             images.append(img_url)
+17:18:06.147735 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:18:06.151833 line        56         for img in imgs:
+17:18:06.151964 line        56         for img in imgs:
+17:18:06.152642 exception   56         for img in imgs:
+17:18:06.154015 exception   56         for img in imgs:
+StopIteration
+StopIteration
+17:18:06.157139 line        60         data = {'order_id': order.id, 'images': images,
+17:18:06.158465 line        60         data = {'order_id': order.id, 'images': images,
+17:18:06.160893 line        61                 'start_time': order.start_time}
+17:18:06.161088 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:18:06.164777 line        62         response.append(data)
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:18:06.165651 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:18:06.169020 line        50     for order in orders:
+17:18:06.169458 line        50     for order in orders:
+17:18:06.172913 exception   50     for order in orders:
+17:18:06.173287 exception   50     for order in orders:
+StopIteration
+StopIteration
+17:18:06.176678 line        64     return jsonify(response)
+17:18:06.177116 line        64     return jsonify(response)
+17:18:06.181363 return      64     return jsonify(response)
+17:18:06.182466 return      64     return jsonify(response)
+Return value:.. <Response 162 bytes [200 OK]>
+Return value:.. <Response 162 bytes [200 OK]>
+17:18:21.111235 call        25 def show():
+17:18:21.116882 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:18:21.119821 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:21.122663 call        25 def show():
+17:18:21.123163 line        32     if not auth_header:
+17:18:21.125041 line        27     before_or_after = request.args.get('q')
+17:18:21.125196 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... before_or_after = '-1'
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:21.125979 line        30     auth_header = request.headers.get('Authorization')
+17:18:21.126168 line        36     id = User.decode_auth_token(auth_token)
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... id = 22
+17:18:21.127636 line        32     if not auth_header:
+17:18:21.130741 line        35     auth_token = auth_header.split(" ")[1]
+17:18:21.130861 line        38     user = User.get_by_id(id)
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:18:21.134534 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+New var:....... user = <User: 22>
+17:18:21.138355 line        38     user = User.get_by_id(id)
+17:18:21.138454 line        41     orders = "liren"
+New var:....... orders = 'liren'
+New var:....... user = <User: 22>
+17:18:21.142539 line        41     orders = "liren"
+17:18:21.142703 line        42     if before_or_after == "1":
+17:18:21.143099 line        45     elif before_or_after == "-1":
+New var:....... orders = 'liren'
+17:18:21.143489 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:18:21.143665 line        42     if before_or_after == "1":
+17:18:21.144009 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+17:18:21.144253 line        45     elif before_or_after == "-1":
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682470>
+17:18:21.144784 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:18:21.145003 line        49     response = []
+17:18:21.145420 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+New var:....... response = []
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682320>
+17:18:21.146410 line        50     for order in orders:
+17:18:21.146807 line        49     response = []
+New var:....... response = []
+New var:....... order = <Order: 160>
+17:18:21.151290 line        52         imgs = Image.select().join(Order).where(
+17:18:21.151380 line        50     for order in orders:
+17:18:21.151874 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11374e7b8>
+New var:....... order = <Order: 160>
+17:18:21.156243 line        52         imgs = Image.select().join(Order).where(
+17:18:21.156360 line        55         images = []
+17:18:21.157101 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x11374e208>
+New var:....... images = []
+17:18:21.160983 line        55         images = []
+New var:....... images = []
+17:18:21.164652 line        56         for img in imgs:
+17:18:21.165027 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:18:21.175868 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+New var:....... img = <Image: 158>
+17:18:21.180229 line        58             images.append(img_url)
+17:18:21.180031 line        57             img_url = img.pict_url
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:18:21.184078 line        56         for img in imgs:
+17:18:21.184409 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:18:21.188044 exception   56         for img in imgs:
+17:18:21.188370 line        56         for img in imgs:
+17:18:21.191734 exception   56         for img in imgs:
+StopIteration
+StopIteration
+17:18:21.195681 line        60         data = {'order_id': order.id, 'images': images,
+17:18:21.195997 line        60         data = {'order_id': order.id, 'images': images,
+17:18:21.196865 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:18:21.199761 line        61                 'start_time': order.start_time}
+17:18:21.200570 line        62         response.append(data)
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:18:21.204541 line        62         response.append(data)
+17:18:21.204656 line        50     for order in orders:
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+Modified var:.. order = <Order: 162>
+17:18:21.208480 line        50     for order in orders:
+Modified var:.. order = <Order: 162>
+17:18:21.211804 line        52         imgs = Image.select().join(Order).where(
+17:18:21.212311 line        52         imgs = Image.select().join(Order).where(
+17:18:21.215756 line        53             Image.status == 1, Order.id == order.id)
+17:18:21.216341 line        53             Image.status == 1, Order.id == order.id)
+Modified var:.. imgs = <peewee.ModelSelect object at 0x113711438>
+17:18:21.218997 line        55         images = []
+Modified var:.. images = []
+Modified var:.. imgs = <peewee.ModelSelect object at 0x11374e2b0>
+17:18:21.222826 line        56         for img in imgs:
+17:18:21.222932 line        55         images = []
+Modified var:.. images = []
+Modified var:.. img = <Image: 161>
+17:18:21.229635 line        57             img_url = img.pict_url
+17:18:21.229774 line        56         for img in imgs:
+17:18:21.233019 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:18:21.238298 line        56         for img in imgs:
+Modified var:.. img = <Image: 161>
+17:18:21.241019 exception   56         for img in imgs:
+StopIteration
+17:18:21.243851 line        57             img_url = img.pict_url
+17:18:21.245051 line        60         data = {'order_id': order.id, 'images': images,
+17:18:21.245482 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:18:21.248466 line        61                 'start_time': order.start_time}
+Modified var:.. data = {'order_id': 162, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 9, 15)}
+17:18:21.249212 line        56         for img in imgs:
+17:18:21.251638 line        62         response.append(data)
+17:18:21.252062 exception   56         for img in imgs:
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 9, 15)}]
+17:18:21.255776 line        50     for order in orders:
+StopIteration
+17:18:21.257320 line        60         data = {'order_id': order.id, 'images': images,
+17:18:21.256779 exception   50     for order in orders:
+StopIteration
+17:18:21.258518 line        61                 'start_time': order.start_time}
+17:18:21.261202 line        64     return jsonify(response)
+Modified var:.. data = {'order_id': 162, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 9, 15)}
+17:18:21.263608 return      64     return jsonify(response)
+Return value:.. <Response 322 bytes [200 OK]>
+17:18:21.264865 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 9, 15)}]
+17:18:21.269991 line        50     for order in orders:
+17:18:21.273098 exception   50     for order in orders:
+StopIteration
+17:18:21.277064 line        64     return jsonify(response)
+17:18:21.279184 return      64     return jsonify(response)
+Return value:.. <Response 322 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+17:26:20.083835 call        40     def moderate(self):
+17:26:20.084482 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x11368ce...larifai.rest.client.Model object at 0x110bc2320>]
+17:26:21.459249 line        42         errors = []
+New var:....... errors = []
+17:26:21.461640 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x11368cef0>
+17:26:21.462095 line        44             res = {}
+New var:....... res = {}
+17:26:21.462651 line        45             response = model.predict_by_url(
+17:26:21.462899 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:26:22.229780 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...5, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:26:22.232301 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...51, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:22.239761 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.240869 line        50                     res['error'] = results[i]['name']
+Modified var:.. res = {'error': 'cigarettes'}
+17:26:22.243986 line        51                     errors.append(res)
+Modified var:.. errors = [{'error': 'cigarettes'}]
+17:26:22.245240 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....63, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:22.250082 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.250599 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....32, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:22.252658 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.253313 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....75, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:22.257160 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.257840 line        48             for i, v in enumerate(results):
+17:26:22.258433 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x110bc2320>
+17:26:22.261903 line        44             res = {}
+Modified var:.. res = {}
+17:26:22.265719 line        45             response = model.predict_by_url(
+17:26:22.269122 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...e': 0.0002106031752191484, 'app_id': 'main'}]}}]}
+17:26:22.973171 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...value': 0.0002106031752191484, 'app_id': 'main'}]
+17:26:22.975690 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.9453271627426147, 'app_id': 'main'}
+17:26:22.976468 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.976872 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.051659271121025085, 'app_id': 'main'}
+17:26:22.977546 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.977878 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.002497178502380848, 'app_id': 'main'}
+17:26:22.978544 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.978875 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 0.000305855181068182, 'app_id': 'main'}
+17:26:22.979508 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.979987 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 0.0002106031752191484, 'app_id': 'main'}
+17:26:22.980612 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:22.980915 line        48             for i, v in enumerate(results):
+17:26:22.981196 line        43         for model in models:
+17:26:22.981477 line        53         return errors
+17:26:22.981757 return      53         return errors
+Return value:.. [{'error': 'cigarettes'}]
+Starting var:.. self = <Image: None>
+17:26:22.982338 call        40     def moderate(self):
+17:26:22.982546 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x112e6ae...larifai.rest.client.Model object at 0x11369f4a8>]
+17:26:23.342119 line        42         errors = []
+New var:....... errors = []
+17:26:23.344624 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x112e6ae48>
+17:26:23.348405 line        44             res = {}
+New var:....... res = {}
+17:26:23.350328 line        45             response = model.predict_by_url(
+17:26:23.350874 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:26:23.884470 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...7, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:26:23.886925 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...51, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:23.887570 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:23.887880 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....84, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:23.888455 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:23.888756 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....13, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:23.889324 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:23.889625 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....17, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:26:23.890190 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:23.890489 line        48             for i, v in enumerate(results):
+17:26:23.890768 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x11369f4a8>
+17:26:23.891191 line        44             res = {}
+17:26:23.891478 line        45             response = model.predict_by_url(
+17:26:23.891756 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...lue': 5.4994323761548e-08, 'app_id': 'main'}]}}]}
+17:26:24.404123 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ... 'value': 5.4994323761548e-08, 'app_id': 'main'}]
+17:26:24.406474 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.999199628829956, 'app_id': 'main'}
+17:26:24.407535 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:24.408153 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.0007843103958293796, 'app_id': 'main'}
+17:26:24.409111 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:24.409533 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 1.595157664269209e-05, 'app_id': 'main'}
+17:26:24.410305 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:24.410681 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 6.811914232685012e-08, 'app_id': 'main'}
+17:26:24.411408 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:24.411777 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 5.4994323761548e-08, 'app_id': 'main'}
+17:26:24.412505 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:26:24.412868 line        48             for i, v in enumerate(results):
+17:26:24.413216 line        43         for model in models:
+17:26:24.413560 line        53         return errors
+17:26:24.413916 return      53         return errors
+Return value:.. []
+17:30:48.498793 call        25 def show():
+17:30:48.502190 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+17:30:48.503349 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:30:48.507053 line        32     if not auth_header:
+17:30:48.510399 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:30:48.514137 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+17:30:48.515996 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:30:48.535082 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:30:48.537417 line        42     if before_or_after == "1":
+17:30:48.537703 line        45     elif before_or_after == "-1":
+17:30:48.537953 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:30:48.538294 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+Modified var:.. orders = <peewee.ModelSelect object at 0x113755be0>
+17:30:48.538759 line        49     response = []
+New var:....... response = []
+17:30:48.539145 line        50     for order in orders:
+New var:....... order = <Order: 160>
+17:30:48.542441 line        52         imgs = Image.select().join(Order).where(
+17:30:48.544893 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x1137559b0>
+17:30:48.546309 line        55         images = []
+New var:....... images = []
+17:30:48.548408 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+17:30:48.553574 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:30:48.555912 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:30:48.556760 line        56         for img in imgs:
+17:30:48.557421 exception   56         for img in imgs:
+StopIteration
+17:30:48.561340 line        60         data = {'order_id': order.id, 'images': images,
+17:30:48.561964 line        61                 'start_time': order.start_time}
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:30:48.565614 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:30:48.569324 line        50     for order in orders:
+Modified var:.. order = <Order: 162>
+17:30:48.570661 line        52         imgs = Image.select().join(Order).where(
+17:30:48.574302 line        53             Image.status == 1, Order.id == order.id)
+Modified var:.. imgs = <peewee.ModelSelect object at 0x113755278>
+17:30:48.575590 line        55         images = []
+Modified var:.. images = []
+17:30:48.576796 line        56         for img in imgs:
+Modified var:.. img = <Image: 161>
+17:30:48.583575 line        57             img_url = img.pict_url
+17:30:48.586311 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:30:48.587234 line        56         for img in imgs:
+17:30:48.588140 exception   56         for img in imgs:
+StopIteration
+17:30:48.594959 line        60         data = {'order_id': order.id, 'images': images,
+17:30:48.597638 line        61                 'start_time': order.start_time}
+Modified var:.. data = {'order_id': 162, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 9, 15)}
+17:30:48.599501 line        62         response.append(data)
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 9, 15)}]
+17:30:48.600463 line        50     for order in orders:
+17:30:48.601137 exception   50     for order in orders:
+StopIteration
+17:30:48.602375 line        64     return jsonify(response)
+17:30:48.604491 return      64     return jsonify(response)
+Return value:.. <Response 322 bytes [200 OK]>
+17:30:53.534674 call        25 def show():
+17:30:53.535665 call        25 def show():
+17:30:53.536072 line        27     before_or_after = request.args.get('q')
+17:30:53.536218 line        27     before_or_after = request.args.get('q')
+New var:....... before_or_after = '-1'
+New var:....... before_or_after = '-1'
+17:30:53.538707 line        30     auth_header = request.headers.get('Authorization')
+17:30:53.541659 line        30     auth_header = request.headers.get('Authorization')
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_header = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:30:53.542465 line        32     if not auth_header:
+17:30:53.542665 line        32     if not auth_header:
+17:30:53.542970 line        35     auth_token = auth_header.split(" ")[1]
+17:30:53.543297 line        35     auth_token = auth_header.split(" ")[1]
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+New var:....... auth_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj...yMn0.CsfVap8mfyxqBaj_EMlRJRDevAqNjzCSZXdh-19xF1o'
+17:30:53.544800 line        36     id = User.decode_auth_token(auth_token)
+17:30:53.544586 line        36     id = User.decode_auth_token(auth_token)
+New var:....... id = 22
+New var:....... id = 22
+17:30:53.548989 line        38     user = User.get_by_id(id)
+17:30:53.549290 line        38     user = User.get_by_id(id)
+New var:....... user = <User: 22>
+17:30:53.557752 line        41     orders = "liren"
+New var:....... user = <User: 22>
+17:30:53.561300 line        41     orders = "liren"
+New var:....... orders = 'liren'
+17:30:53.562244 line        42     if before_or_after == "1":
+New var:....... orders = 'liren'
+17:30:53.563229 line        45     elif before_or_after == "-1":
+17:30:53.564110 line        42     if before_or_after == "1":
+17:30:53.564368 line        46         orders = Order.select().where(Order.user_id == user.id,
+17:30:53.564853 line        45     elif before_or_after == "-1":
+17:30:53.566219 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+17:30:53.566407 line        46         orders = Order.select().where(Order.user_id == user.id,
+Modified var:.. orders = <peewee.ModelSelect object at 0x11375e518>
+17:30:53.568011 line        49     response = []
+17:30:53.568519 line        47                                       Order.start_time < datetime.datetime.now(), Order.status == 1)
+New var:....... response = []
+Modified var:.. orders = <peewee.ModelSelect object at 0x113682320>
+17:30:53.571888 line        50     for order in orders:
+17:30:53.571777 line        49     response = []
+New var:....... response = []
+17:30:53.575655 line        50     for order in orders:
+New var:....... order = <Order: 160>
+New var:....... order = <Order: 160>
+17:30:53.581208 line        52         imgs = Image.select().join(Order).where(
+17:30:53.583223 line        52         imgs = Image.select().join(Order).where(
+17:30:53.583808 line        53             Image.status == 1, Order.id == order.id)
+17:30:53.584801 line        53             Image.status == 1, Order.id == order.id)
+New var:....... imgs = <peewee.ModelSelect object at 0x1137564a8>
+New var:....... imgs = <peewee.ModelSelect object at 0x113756160>
+17:30:53.588169 line        55         images = []
+17:30:53.591620 line        55         images = []
+New var:....... images = []
+17:30:53.592234 line        56         for img in imgs:
+New var:....... images = []
+17:30:53.598981 line        56         for img in imgs:
+New var:....... img = <Image: 158>
+New var:....... img = <Image: 158>
+17:30:53.604933 line        57             img_url = img.pict_url
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+17:30:53.607115 line        57             img_url = img.pict_url
+17:30:53.607540 line        58             images.append(img_url)
+New var:....... img_url = 'https://s3.amazonaws.com/meistagram/tech.jpeg'
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:30:53.612237 line        56         for img in imgs:
+17:30:53.612086 line        58             images.append(img_url)
+17:30:53.615683 exception   56         for img in imgs:
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+StopIteration
+17:30:53.619330 line        60         data = {'order_id': order.id, 'images': images,
+17:30:53.619079 line        56         for img in imgs:
+17:30:53.620016 line        61                 'start_time': order.start_time}
+17:30:53.620292 exception   56         for img in imgs:
+StopIteration
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+17:30:53.624027 line        60         data = {'order_id': order.id, 'images': images,
+17:30:53.627511 line        61                 'start_time': order.start_time}
+17:30:53.627835 line        62         response.append(data)
+New var:....... data = {'order_id': 160, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 8, 30)}
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+17:30:53.630568 line        62         response.append(data)
+17:30:53.630992 line        50     for order in orders:
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 8, 30)}]
+Modified var:.. order = <Order: 162>
+17:30:53.634816 line        50     for order in orders:
+Modified var:.. order = <Order: 162>
+17:30:53.635366 line        52         imgs = Image.select().join(Order).where(
+17:30:53.638248 line        52         imgs = Image.select().join(Order).where(
+17:30:53.638873 line        53             Image.status == 1, Order.id == order.id)
+17:30:53.639999 line        53             Image.status == 1, Order.id == order.id)
+Modified var:.. imgs = <peewee.ModelSelect object at 0x113756c18>
+17:30:53.643637 line        55         images = []
+Modified var:.. imgs = <peewee.ModelSelect object at 0x113756f98>
+Modified var:.. images = []
+17:30:53.646741 line        55         images = []
+Modified var:.. images = []
+17:30:53.647192 line        56         for img in imgs:
+17:30:53.647934 line        56         for img in imgs:
+Modified var:.. img = <Image: 161>
+Modified var:.. img = <Image: 161>
+17:30:53.655835 line        57             img_url = img.pict_url
+17:30:53.658131 line        58             images.append(img_url)
+17:30:53.658241 line        57             img_url = img.pict_url
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:30:53.659213 line        58             images.append(img_url)
+Modified var:.. images = ['https://s3.amazonaws.com/meistagram/tech.jpeg']
+17:30:53.660397 line        56         for img in imgs:
+17:30:53.663449 line        56         for img in imgs:
+17:30:53.664347 exception   56         for img in imgs:
+17:30:53.664879 exception   56         for img in imgs:
+StopIteration
+StopIteration
+17:30:53.669850 line        60         data = {'order_id': order.id, 'images': images,
+17:30:53.670889 line        60         data = {'order_id': order.id, 'images': images,
+17:30:53.673747 line        61                 'start_time': order.start_time}
+Modified var:.. data = {'order_id': 162, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 9, 15)}
+17:30:53.676392 line        62         response.append(data)
+17:30:53.676277 line        61                 'start_time': order.start_time}
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 9, 15)}]
+Modified var:.. data = {'order_id': 162, 'images': ['https://s3.amazona...art_time': datetime.datetime(2019, 5, 30, 9, 15)}
+17:30:53.682671 line        50     for order in orders:
+17:30:53.683891 line        62         response.append(data)
+17:30:53.684646 exception   50     for order in orders:
+Modified var:.. response = [{'order_id': 160, 'images': ['https://s3.amazon...rt_time': datetime.datetime(2019, 5, 30, 9, 15)}]
+17:30:53.688298 line        50     for order in orders:
+StopIteration
+17:30:53.689188 exception   50     for order in orders:
+17:30:53.692684 line        64     return jsonify(response)
+17:30:53.698858 return      64     return jsonify(response)
+Return value:.. <Response 322 bytes [200 OK]>
+StopIteration
+17:30:53.708294 line        64     return jsonify(response)
+17:30:53.710288 return      64     return jsonify(response)
+Return value:.. <Response 322 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+17:32:31.791268 call        40     def moderate(self):
+17:32:31.791792 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x11369f7...larifai.rest.client.Model object at 0x113312f28>]
+17:32:33.184954 line        42         errors = []
+New var:....... errors = []
+17:32:33.187547 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x11369f710>
+17:32:33.191207 line        44             res = {}
+New var:....... res = {}
+17:32:33.192144 line        45             response = model.predict_by_url(
+17:32:33.195707 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:32:33.971903 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...5, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:32:33.974311 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...51, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:33.975360 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:33.975862 line        50                     res['error'] = results[i]['name']
+Modified var:.. res = {'error': 'cigarettes'}
+17:32:33.976536 line        51                     errors.append(res)
+Modified var:.. errors = [{'error': 'cigarettes'}]
+17:32:33.977190 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....63, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:33.978068 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:33.978583 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....32, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:33.979512 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:33.979925 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....75, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:33.980762 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:33.981181 line        48             for i, v in enumerate(results):
+17:32:33.981573 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x113312f28>
+17:32:33.982243 line        44             res = {}
+Modified var:.. res = {}
+17:32:33.983311 line        45             response = model.predict_by_url(
+17:32:33.986944 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...e': 0.0002106031752191484, 'app_id': 'main'}]}}]}
+17:32:34.879439 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...value': 0.0002106031752191484, 'app_id': 'main'}]
+17:32:34.880241 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.9453271627426147, 'app_id': 'main'}
+17:32:34.881018 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:34.881359 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.051659271121025085, 'app_id': 'main'}
+17:32:34.882045 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:34.882380 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.002497178502380848, 'app_id': 'main'}
+17:32:34.883157 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:34.883482 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 0.000305855181068182, 'app_id': 'main'}
+17:32:34.884049 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:34.884481 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 0.0002106031752191484, 'app_id': 'main'}
+17:32:34.885424 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:34.885961 line        48             for i, v in enumerate(results):
+17:32:34.886309 line        43         for model in models:
+17:32:34.886638 line        53         return errors
+17:32:34.886944 return      53         return errors
+Return value:.. [{'error': 'cigarettes'}]
+Starting var:.. self = <Image: None>
+17:32:34.887773 call        40     def moderate(self):
+17:32:34.888008 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x113755a...larifai.rest.client.Model object at 0x11375e9b0>]
+17:32:35.268558 line        42         errors = []
+New var:....... errors = []
+17:32:35.271067 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x113755a58>
+17:32:35.271843 line        44             res = {}
+New var:....... res = {}
+17:32:35.272705 line        45             response = model.predict_by_url(
+17:32:35.273316 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+17:32:35.863374 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...7, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+17:32:35.865783 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...51, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:35.867522 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:35.867924 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....84, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:35.868622 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:35.868957 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....13, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:35.869629 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:35.869967 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....17, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+17:32:35.870516 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:35.870808 line        48             for i, v in enumerate(results):
+17:32:35.871172 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x11375e9b0>
+17:32:35.871673 line        44             res = {}
+17:32:35.871976 line        45             response = model.predict_by_url(
+17:32:35.872267 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...lue': 5.4994323761548e-08, 'app_id': 'main'}]}}]}
+17:32:36.461689 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ... 'value': 5.4994323761548e-08, 'app_id': 'main'}]
+17:32:36.464435 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.999199628829956, 'app_id': 'main'}
+17:32:36.469106 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:36.469809 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.0007843103958293796, 'app_id': 'main'}
+17:32:36.473899 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:36.474601 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 1.595157664269209e-05, 'app_id': 'main'}
+17:32:36.478983 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:36.479883 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 6.811914232685012e-08, 'app_id': 'main'}
+17:32:36.483595 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:36.484265 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 5.4994323761548e-08, 'app_id': 'main'}
+17:32:36.488124 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+17:32:36.488838 line        48             for i, v in enumerate(results):
+17:32:36.489365 line        43         for model in models:
+17:32:36.492621 line        53         return errors
+17:32:36.493107 return      53         return errors
+Return value:.. []
