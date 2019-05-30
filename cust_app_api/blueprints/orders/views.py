@@ -104,7 +104,7 @@ def create():
     return jsonify({'status': 'ok', 'errors': errors, "order_id": order.id})
 
 
-@orders_api_blueprint.route('/verify', methods=["GET"])
+@orders_api_blueprint.route('/verify', methods=["POST"])
 def verify():
     # Verify that all the images passed the moderation
     data = request.get_json()
