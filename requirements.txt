@@ -32,6 +32,7 @@ jsmin==2.2.2
 jsonschema==2.6.0
 MarkupSafe==1.1.1
 peewee==3.9.5
+peewee-db-evolve==3.7.0
 protobuf==3.7.1
 psycopg2-binary==2.8.2
 pycodestyle==2.5.0
