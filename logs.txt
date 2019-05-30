@@ -1,0 +1,14 @@
+10:28:37.542949 call        16 def login():
+10:28:37.545864 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'peanuts', 'password': '12345678'}
+10:28:37.547503 line        19     if not auth or not auth['username'] or not auth['password']:
+10:28:37.550821 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 26>
+10:28:37.581824 line        23     print(user)
+10:28:37.584652 line        25     if not user:
+10:28:37.585010 line        29     if check_password_hash(user.password, auth['password']):
+10:28:37.585551 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yNn0.j6Ep-fQ_Dp5yxCM74FDFytKqwF8lZnOhQNlS-ZxcY_c'
+10:28:37.589202 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+10:28:37.590732 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 280 bytes [200 OK]>
