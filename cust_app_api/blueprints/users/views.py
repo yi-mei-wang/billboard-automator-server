@@ -22,20 +22,6 @@ def index():
 def create():
     data = request.get_json()
 
-    # Validation:
-    # 1. Check if all fields are keyed in
-    # 2. Length
-    # 3. Password complexity
-    # 4. Email validity
-
-    # Handle missing fields
-    # if not data["username"]:
-    #     return jsonify({'status': 400 , 'message': 'Username is required'})
-    # elif not data["email"]:
-    #     return jsonify({'status': 400 , 'message': 'Email is required'})
-    # elif not data["password"]:
-    #     return jsonify({'status': 400 , 'message': 'Password is required'})
-
     hashed_password = generate_password_hash(
         data['password'], method='sha256', salt_length=8)
 
@@ -52,6 +38,6 @@ def create():
     # When username and email are taken
     except IntegrityError as e:
         if 'username' in str(e):
-            return jsonify({'status': 409, 'message': 'Username is taken'})
+            return jsonify({'status': 4091, 'message': 'Username is taken'})
         elif 'email' in str(e):
-            return jsonify({'status': 409, 'message': 'Email is taken'})
+            return jsonify({'status': 4092, 'message': 'Email is taken'})

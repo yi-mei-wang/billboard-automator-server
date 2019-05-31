@@ -13,15 +13,20 @@ import pysnooper
 orders_api_blueprint = Blueprint("orders_api", __name__)
 
 
-@orders_api_blueprint.route('/')
-def index():
-    # Display all the orders
-    # When given a user id, fetch all the orders related to that user
-    return "hkfds"
+# @orders_api_blueprint.route('/')
+# def index():
+#     # Display all the orders
+#     # When given a user id, fetch all the orders related to that user
+#     order_id = request.args.get('q')
+#     order = Order.get_by_id(order_id)
+#     print(order.id)
+#     print(order.start_time)
+#     images = Image.select().join(Order).where(
+#         Image.status == 1, Order.id == order_id)
+#     return jsonify({"orderId": str(order.id), "images": images, "startTime": order.start_time})
 
 
 @orders_api_blueprint.route('/show')
-@pysnooper.snoop('log.txt')
 def show():
     # Before or after (-1 is before, 1 is after)
     before_or_after = request.args.get('q')
@@ -33,18 +38,25 @@ def show():
         return jsonify({'status': '400', 'errors': 'No Auth Header'})
 
     auth_token = auth_header.split(" ")[1]
-    id = User.decode_auth_token(auth_token)
+    user_id = User.decode_auth_token(auth_token)
 
-    user = User.get_by_id(id)
+    # Check if user_id has been returned
+    if not user_id:
+        return jsonify({'status': 'negative', 'msg': 'Please log in again'})
 
-    # Get all the orders belonging to the user (> means future, < means past)
+    user = User.get_by_id(user_id)
+
+    # Get all the orders belonging to the user (> means future, < means past) > means 15 mins in the future
     orders = "liren"
     if before_or_after == "1":
         orders = Order.select().where(Order.user_id == user.id,
                                       Order.start_time > datetime.datetime.now(), Order.status == 1)
     elif before_or_after == "-1":
         orders = Order.select().where(Order.user_id == user.id,
-                                      Order.start_time < datetime.datetime.now(), Order.status == 1)
+                                      Order.start_time + datetime.timedelta(minutes=15) < datetime.datetime.now(), Order.status == 1)
+    elif before_or_after == "0":
+        orders = Order.select().where(Order.user_id == user.id,
+                                      Order.id == request.args.get('id'), Order.status == 1)
 
     response = []
     for order in orders:
@@ -71,7 +83,13 @@ def create():
     chosen_date = datetime.datetime.utcfromtimestamp(
         int(request.form.get('chosenDate'))/1000)
     auth_token = request.form.get('auth_token')
+
     user_id = User.decode_auth_token(auth_token)
+
+    # Check if user_id has been returned
+    if not user_id:
+        return jsonify({'status': 'negative', 'msg': 'Please log in again'})
+
     user = User.get_by_id(user_id)
     # Create a new Order entry if time slot if not taken
     try:

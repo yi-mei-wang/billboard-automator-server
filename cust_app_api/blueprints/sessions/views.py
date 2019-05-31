@@ -23,11 +23,11 @@ def login():
     print(user)
 
     if not user:
-        return make_response('User not found', 408, {'WWW-Authenticate': 'Basic realm="Login required!"'})
+        return jsonify({'status': 408, 'message': 'User not found'})
 
     # If password is valid
     if check_password_hash(user.password, auth['password']):
         token = user.encode_auth_token()
         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 
-    return make_response('Password incorrect', 401, {'WWW-Authenticate': 'Basic realm="Login required!"'})
+    return jsonify({'status': 401, 'message': 'Password'})

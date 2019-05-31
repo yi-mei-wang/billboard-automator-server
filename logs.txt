@@ -51,3 +51,45 @@ New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMn0.
 16:33:38.917655 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 16:33:38.920277 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 Return value:.. <Response 279 bytes [200 OK]>
+19:07:47.208632 call        16 def login():
+19:07:47.214988 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+19:07:47.216179 line        19     if not auth or not auth['username'] or not auth['password']:
+19:07:47.219431 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+19:07:47.245005 line        23     print(user)
+19:07:47.248227 line        25     if not user:
+19:07:47.248670 line        29     if check_password_hash(user.password, auth['password']):
+19:07:47.252239 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.bPsqWM_MovZJqAqZ81eol2xTXYBEiGoFU0PsvAaOMVY'
+19:07:47.256803 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+19:07:47.260279 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>
+23:14:00.481990 call        16 def login():
+23:14:00.484971 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+23:14:00.486557 line        19     if not auth or not auth['username'] or not auth['password']:
+23:14:00.489324 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+23:14:00.494629 line        23     print(user)
+23:14:00.496686 line        25     if not user:
+23:14:00.497597 line        29     if check_password_hash(user.password, auth['password']):
+23:14:00.500818 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.uG6MTX1OLR_HYi3p6QwTlDp6f_vGCKvXtvuxNjsRvwA'
+23:14:00.502587 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+23:14:00.504262 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>
+23:36:26.872761 call        16 def login():
+23:36:26.875597 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+23:36:26.876633 line        19     if not auth or not auth['username'] or not auth['password']:
+23:36:26.879817 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+23:36:26.885219 line        23     print(user)
+23:36:26.887285 line        25     if not user:
+23:36:26.887945 line        29     if check_password_hash(user.password, auth['password']):
+23:36:26.891546 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.PyBxXmkQdGFdU1bhPcXE2WmiSk1WV4uuIP0mfRHoENk'
+23:36:26.894833 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+23:36:26.896351 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>
