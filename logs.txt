@@ -93,3 +93,67 @@ New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.
 23:36:26.894833 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 23:36:26.896351 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
 Return value:.. <Response 278 bytes [200 OK]>
+10:48:50.750672 call        16 def login():
+10:48:50.759463 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'adminsaldjsald', 'password': '12345678'}
+10:48:50.762868 line        19     if not auth or not auth['username'] or not auth['password']:
+10:48:50.763229 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = None
+10:48:50.872273 line        23     print(user)
+10:48:50.874769 line        25     if not user:
+10:48:50.875805 line        26         return jsonify({'status': 408, 'message': 'User not found'})
+10:48:50.878816 return      26         return jsonify({'status': 408, 'message': 'User not found'})
+Return value:.. <Response 52 bytes [200 OK]>
+10:54:31.349857 call        16 def login():
+10:54:31.354489 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+10:54:31.357741 line        19     if not auth or not auth['username'] or not auth['password']:
+10:54:31.358205 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+10:54:31.418097 line        23     print(user)
+10:54:31.420311 line        25     if not user:
+10:54:31.420785 line        29     if check_password_hash(user.password, auth['password']):
+10:54:31.425002 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.CpOuWexy3s7G6AZFYJ97cvXUidIUwy5CEoVV6tcR-8Q'
+10:54:31.427894 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+10:54:31.429688 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>
+10:55:06.308067 call        16 def login():
+10:55:06.311678 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'adminsa', 'password': '12345678'}
+10:55:06.315415 line        19     if not auth or not auth['username'] or not auth['password']:
+10:55:06.315757 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = None
+10:55:06.319465 line        23     print(user)
+10:55:06.321600 line        25     if not user:
+10:55:06.322068 line        26         return jsonify({'status': 408, 'message': 'User not found'})
+10:55:06.323262 return      26         return jsonify({'status': 408, 'message': 'User not found'})
+Return value:.. <Response 52 bytes [200 OK]>
+10:55:09.727120 call        16 def login():
+10:55:09.727436 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+10:55:09.730075 line        19     if not auth or not auth['username'] or not auth['password']:
+10:55:09.731223 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+10:55:09.734924 line        23     print(user)
+10:55:09.737668 line        25     if not user:
+10:55:09.738251 line        29     if check_password_hash(user.password, auth['password']):
+10:55:09.741376 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.2pha7HTOQpqzlEwwIlaiVXIskBasa_0G8JjKFEjdXaU'
+10:55:09.745088 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+10:55:09.746245 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>
+10:55:34.425919 call        16 def login():
+10:55:34.426274 line        17     auth = request.get_json()
+New var:....... auth = {'username': 'admin', 'password': '12345678'}
+10:55:34.428809 line        19     if not auth or not auth['username'] or not auth['password']:
+10:55:34.429498 line        22     user = User.get_or_none(username=auth['username'])
+New var:....... user = <User: 20>
+10:55:34.432954 line        23     print(user)
+10:55:34.435014 line        25     if not user:
+10:55:34.436372 line        29     if check_password_hash(user.password, auth['password']):
+10:55:34.438807 line        30         token = user.encode_auth_token()
+New var:....... token = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiO...yMH0.p9TQ_4aLQG6HgK74c7XGlTH_z9zqamYNqN87N32KmEE'
+10:55:34.439845 line        31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+10:55:34.443877 return      31         return jsonify({'auth_token': token.decode('UTF-8'), 'message': "Successfully signed in", 'status': 201, 'user': {'id': user.id, 'username': user.username}})
+Return value:.. <Response 278 bytes [200 OK]>

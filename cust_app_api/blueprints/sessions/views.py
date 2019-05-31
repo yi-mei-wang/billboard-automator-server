@@ -12,7 +12,6 @@ sessions_api_blueprint = Blueprint('sessions_api', __name__)
 
 
 @sessions_api_blueprint.route('/login', methods=['POST'])
-@pysnooper.snoop('logs.txt')
 def login():
     auth = request.get_json()
 
