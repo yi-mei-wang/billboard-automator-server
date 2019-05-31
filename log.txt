@@ -9433,3 +9433,133 @@ StopIteration
 00:44:18.695360 line        68     return jsonify(response)
 00:44:18.696824 return      68     return jsonify(response)
 Return value:.. <Response 162 bytes [200 OK]>
+Starting var:.. self = <Image: None>
+12:03:36.759247 call        40     def moderate(self):
+12:03:36.805627 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x10c22d9...larifai.rest.client.Model object at 0x10c22dac8>]
+12:03:37.858650 line        42         errors = []
+New var:....... errors = []
+12:03:37.861035 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x10c22d908>
+12:03:37.861638 line        44             res = {}
+New var:....... res = {}
+12:03:37.862082 line        45             response = model.predict_by_url(
+12:03:37.862328 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+12:03:38.409728 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'weapons', 'name': 'weapons', 'value': 0...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+12:03:38.413641 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'weapons', 'name': 'weapons', 'value': 0....06, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:03:38.421181 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.422119 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...18, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:03:38.429029 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.429723 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....72, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:03:38.433729 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.434343 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 3....06, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:03:38.438471 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.439306 line        48             for i, v in enumerate(results):
+12:03:38.442535 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x10c22dac8>
+12:03:38.446165 line        44             res = {}
+12:03:38.446865 line        45             response = model.predict_by_url(
+12:03:38.447504 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...e': 7.122277212445738e-10, 'app_id': 'main'}]}}]}
+12:03:38.888220 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...value': 7.122277212445738e-10, 'app_id': 'main'}]
+12:03:38.891169 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 1.0, 'app_id': 'main'}
+12:03:38.894908 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.895351 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 3.2096700408601464e-08, 'app_id': 'main'}
+12:03:38.899581 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.900399 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 9.237385079075011e-09, 'app_id': 'main'}
+12:03:38.904380 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.904994 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 1.4473439113871223e-09, 'app_id': 'main'}
+12:03:38.909174 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.910366 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 7.122277212445738e-10, 'app_id': 'main'}
+12:03:38.913985 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:03:38.914586 line        48             for i, v in enumerate(results):
+12:03:38.915120 line        43         for model in models:
+12:03:38.918526 line        53         return errors
+12:03:38.919128 return      53         return errors
+Return value:.. []
+Starting var:.. self = <Image: None>
+12:05:45.647660 call        40     def moderate(self):
+12:05:45.648190 line        41         models = [app.models.get('cigarettes'), app.models.get('moderation')]
+New var:....... models = [<clarifai.rest.client.Model object at 0x10cada5...larifai.rest.client.Model object at 0x10cada7f0>]
+12:05:46.224767 line        42         errors = []
+New var:....... errors = []
+12:05:46.227046 line        43         for model in models:
+New var:....... model = <clarifai.rest.client.Model object at 0x10cada550>
+12:05:46.227499 line        44             res = {}
+New var:....... res = {}
+12:05:46.227926 line        45             response = model.predict_by_url(
+12:05:46.228178 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+New var:....... response = {'status': {'code': 10000, 'description': 'Ok', ...app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]}}]}
+12:05:46.954290 line        47             results = response['outputs'][0]['data']['concepts']
+New var:....... results = [{'id': 'cigarettes', 'name': 'cigarettes', 'val...6, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}]
+12:05:46.956840 line        48             for i, v in enumerate(results):
+New var:....... i = 0
+New var:....... v = {'id': 'cigarettes', 'name': 'cigarettes', 'valu...48, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:05:46.964075 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:46.964959 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'weapons', 'name': 'weapons', 'value': 0....38, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:05:46.968954 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:46.969579 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'alcohol', 'name': 'alcohol', 'value': 0....57, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:05:46.973700 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:46.974337 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'smoking', 'name': 'smoking', 'value': 0....46, 'app_id': '0fbb314a40a2421fa5db64d8bc0f8811'}
+12:05:46.978440 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:46.979050 line        48             for i, v in enumerate(results):
+12:05:46.979580 line        43         for model in models:
+Modified var:.. model = <clarifai.rest.client.Model object at 0x10cada7f0>
+12:05:46.981159 line        44             res = {}
+12:05:46.982408 line        45             response = model.predict_by_url(
+12:05:46.983012 line        46                 url=f"{AWS_DOMAIN}/{self.path}")
+Modified var:.. response = {'status': {'code': 10000, 'description': 'Ok', ...': 4.4275847699282167e-07, 'app_id': 'main'}]}}]}
+12:05:47.978495 line        47             results = response['outputs'][0]['data']['concepts']
+Modified var:.. results = [{'id': 'ai_QD1zClSd', 'name': 'safe', 'value': ...alue': 4.4275847699282167e-07, 'app_id': 'main'}]
+12:05:47.981036 line        48             for i, v in enumerate(results):
+Modified var:.. i = 0
+Modified var:.. v = {'id': 'ai_QD1zClSd', 'name': 'safe', 'value': 0.7482320070266724, 'app_id': 'main'}
+12:05:47.982050 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:47.982490 line        48             for i, v in enumerate(results):
+Modified var:.. i = 1
+Modified var:.. v = {'id': 'ai_V76bvrtj', 'name': 'explicit', 'value': 0.24030394852161407, 'app_id': 'main'}
+12:05:47.983360 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:47.983780 line        48             for i, v in enumerate(results):
+Modified var:.. i = 2
+Modified var:.. v = {'id': 'ai_RtXh5qkR', 'name': 'suggestive', 'value': 0.011461312882602215, 'app_id': 'main'}
+12:05:47.984630 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:47.984965 line        48             for i, v in enumerate(results):
+Modified var:.. i = 3
+Modified var:.. v = {'id': 'ai_8QQwMjQR', 'name': 'drug', 'value': 2.3435047751263482e-06, 'app_id': 'main'}
+12:05:47.985673 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:47.986116 line        48             for i, v in enumerate(results):
+Modified var:.. i = 4
+Modified var:.. v = {'id': 'ai_kBBGf7r8', 'name': 'gore', 'value': 4.4275847699282167e-07, 'app_id': 'main'}
+12:05:47.986819 line        49                 if results[i]['value'] > 0.6 and results[i]['name'] not in 'safe':
+12:05:47.987155 line        48             for i, v in enumerate(results):
+12:05:47.987491 line        43         for model in models:
+12:05:47.987858 line        53         return errors
+12:05:47.988238 return      53         return errors
+Return value:.. []

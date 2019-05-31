@@ -50,10 +50,15 @@ def show():
     orders = "liren"
     if before_or_after == "1":
         orders = Order.select().where(Order.user_id == user.id,
-                                      Order.start_time > datetime.datetime.now())
+                                      Order.start_time +
+                                      datetime.timedelta(
+                                          minutes=15) > datetime.datetime.now(),
+                                      Order.status == 1)
     elif before_or_after == "-1":
         orders = Order.select().where(Order.user_id == user.id,
-                                      Order.start_time + datetime.timedelta(minutes=15) < datetime.datetime.now(), Order.status == 1)
+                                      Order.start_time +
+                                      datetime.timedelta(
+                                          minutes=15) < datetime.datetime.now(), Order.status == 1)
     elif before_or_after == "0":
         orders = Order.select().where(Order.user_id == user.id,
                                       Order.id == request.args.get('id'), Order.status == 1)
