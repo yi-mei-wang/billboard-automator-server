@@ -64,6 +64,7 @@ def show():
                                       Order.id == request.args.get('id'), Order.status == 1)
 
     response = []
+
     for order in orders:
         # Get all the images from each order
         imgs = Image.select().join(Order).where(
@@ -133,5 +134,6 @@ def verify():
     data = request.get_json()
     order_id = data['order_id']
     order = Order.get_by_id(int(order_id))
-    order.pass_mod()
-    return jsonify({'status': 'ok'})
+    q = order.update({Order.status: 1})
+    q.execute()
+    return jsonify({'status': 'ok', 'order': order.id, 'order_status': order.status})
