@@ -1,3 +1,5 @@
 # billboard-automator-server
 
-Server for a billboard automator built in Python. Flask, Peewee and Postgresql are used.
+Back-end server for a billboard automator built in Python. 
+
+Flask framework, Peewee ORM and Postgresql are used.
