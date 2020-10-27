@@ -9,7 +9,7 @@ clarifai==2.6.1
 Click==7.0
 colorama==0.4.1
 configparser==3.7.4
-cryptography==2.6.1
+cryptography==3.2
 cssmin==0.2.0
 docutils==0.14
 Flask==1.0.2
