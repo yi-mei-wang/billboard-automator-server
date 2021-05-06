@@ -14,7 +14,7 @@ cssmin==0.2.0
 docutils==0.14
 Flask==1.0.2
 Flask-Assets==0.12
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 Flask-DotEnv==0.1.2
 Flask-JWT-Extended==3.18.2
 Flask-Login==0.4.1
