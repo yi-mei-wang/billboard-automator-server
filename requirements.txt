@@ -2,7 +2,7 @@ asn1crypto==0.24.0
 autopep8==1.4.4
 boto3==1.9.151
 botocore==1.12.151
-certifi==2019.3.9
+certifi==2022.12.7
 cffi==1.12.3
 chardet==3.0.4
 clarifai==2.6.1
